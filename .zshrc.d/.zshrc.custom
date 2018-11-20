@@ -1,0 +1,171 @@
+function man ()
+{
+LANG=ja_JP.utf8 /usr/bin/man -Tutf8 $@ | lv
+}
+
+# autoload -U compinit
+# compinit -u
+
+setopt share_history
+
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+bindkey -s '^z' '\eqfg %$EDITOR:t\n'
+
+export PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
+export PATH=$PATH:/home/student/j15/j15436/.local/bin:/home/student/j15/j15436/programs/google-cloud-sdk/bin
+
+export EDITOR='vim'
+export E_EDITOR='emacs -nw'
+export HOST=(hostname)
+##export JLESSCHARSET=japanese-euc
+exportJLESSCHARSET=utf-8
+##export LANG=ja_JP.eucJP
+export LANG=ja_JP.UTF-8
+export LANGUAGE="ja_JP:ja:en_GB:en"
+export NNTPSERVER=localhost
+export ORGANIZATION="National Institute of Technology, Kisarazu College"
+export OUTPUT_CHARSET=utf-8
+export PAGER=lv
+##export LV=-Oej
+export LV="-Ou8 -c"
+export TMPDIR=/tmp
+export TEXINPUTS=".//:$HOME/lib/tex/macros//:/usr/share/texlive//:/usr/share/texmf//"
+
+export VISUAL='emacs -nw'
+
+##export XMODIFIERS=@im=SCIM
+##export UIM_IM_ENGINE=anthy
+##export GTK_IM_MODULE=scim
+##
+#export XMODIFIERS=@im=ibus
+#export XIM=ibus
+#export XIM_PROGRAM=/usr/bin/ibus-daemon
+#export XIM_ARGS="--xim"
+#export GTK_IM_MODULE="ibus"
+export XMODIFIERS=@im=fcitx
+export XIM=fcitx
+export XIM_PROGRAM=/usr/bin/fcitx
+export XIM_ARGS="--xim"
+export GTK_IM_MODULE="fcitx"
+
+
+### for Adobe Reader 7.0
+export G_FILENAME_ENCODING=utf-8
+
+### for acroread 9.x
+### Stop to search for Japanese font msmincho.ttc, msgothic.ttc
+export ACRO_DISABLE_FONT_CONFIG=1
+## バグるから消した
+# alias |\
+# while read line
+# do
+# aname=$(echo $line | cut -d'=' -f1)
+# unalias $aname
+# done
+
+setopt extended_history
+alias cc='/home/local/bin/gcc-cp.sh'
+#alias gcc='/home/local/bin/gcc-cp.sh'
+alias cp='\cp -i'
+alias ls='\ls -vCF --color=always'
+alias lsa='\ls -a -vCF --color=auto'
+alias more='\lv'
+alias less='\lv'
+alias mv='\mv -i'
+alias rm='\rm -i'
+alias w3m='\w3m -X'
+alias cls='clear'
+alias xdvi="\xdvi -geometry -0+0"
+alias emacs-bc='emacs -batch -f batch-byte-compile *.el'
+alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/|  /g'"
+alias ren='move'
+
+## 以下自分の設定
+
+function _emacs() {
+command emacs $@ &
+}
+
+function gcc() {
+    out=`echo $1 | awk -F '.' '{print $1}'`
+    /home/local/bin/gcc-cp.sh $1 -o ${out}
+}
+
+# Emacs ライクな操作を有効にする（文字入力中に Ctrl-F,B でカーソル移動など）
+# Vi ライクな操作が好みであれば `bindkey -v` とする
+# 既に入っている様子...
+# bindkey -e
+
+# 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリに cd する
+# 例： /usr/bin と入力すると /usr/bin ディレクトリに移動
+setopt auto_cd
+
+# コマンドミスを修正
+setopt correct
+
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+# 先頭にスペースが入ったときのコマンドをヒストリに残さない
+setopt hist_ignore_space
+
+# auto_push
+setopt auto_pushd
+
+# ls時自動で色をつける
+#setopt CLSICOLOR=true
+
+
+
+# 補完時に大文字と小文字を区別しない
+#zstyle ':compeltion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# mkdir & auto_cd
+
+
+# cd時に自動でclearをするかどうか判定する
+#auto_clear_mode=true
+
+
+
+## 自作関数
+
+function mcdir(){
+mkdir $1 ; cd $1 ;
+}
+
+funtion mkj4(){
+mkdir ~pro/$(date +%m%d); cd ~pro/$(date +%m%d); ln -s ~pro/$(date +%m%d) ~j4pro/j4pro$(date +%m%d)
+}
+
+function getj4ex(){
+cp -r ~j4prog/j3pro$(date +%m%d) ~j4exam
+}
+
+function getj4exam(){
+cp -r ~j4prog/j4exam$(date +%m%d) ~j4exam
+}
+
+funtion cd_() {
+cd ~pro/$(date +%m%d); clear; tree
+}
+
+function _cd() {
+cd $1; clear
+}
+
+#bin のパスとかもろもろ
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
+export GEM_HOME=~/.gem
+
+#ssh自動化
+alias _ssh='ssh j15436@10.7.1.2'
+alias gpp='g++'
+
+# reload のbindkey
+bindkey -r "^G"
+bindkey -s '^G' "^A^Ksource ~/.zshrc ^M"

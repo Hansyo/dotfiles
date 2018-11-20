@@ -1,0 +1,25 @@
+print_message=false
+function _echo() {
+    if $print_message;then
+        echo $1
+    elif [ $# -eq 2 ];then
+        if $2;then
+            echo $1
+        fi
+    fi
+}
+
+_echo 'start .zshrc.usability'
+# コマンド関連
+source ~/.zshrc.usability
+_echo 'end .zshrc.usability'
+_echo 'start .zshrc.looks'
+# 見た目関連
+source ~/.zshrc.looks 
+_echo 'end .zshrc.looks'
+
+# zplug
+_echo 'start .zshrc.zplug' false 
+# source ~/.zshrc.zplug
+source ~/.zplug/repos/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+_echo 'end .zshrc.zplug' false
