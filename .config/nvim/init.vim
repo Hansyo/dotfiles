@@ -5,6 +5,7 @@ scriptencoding utf-8
 " プラグインの設定ファイル読み込み
 source ~/.config/nvim/dein.vim
 source ~/.config/nvim/NERDTree.vim
+source ~/.config/nvim/markdown.vim
 
 " プラグインはここまで-----------------------------------------
 

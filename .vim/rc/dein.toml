@@ -57,4 +57,16 @@ repo = 'itchyny/lightline.vim'
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
+# markdow用の基礎repo
+[[plugins]]
+repo='godlygeek/tabular'
+
+# markdown形式ファイルで読み込む
+[[plugins]]
+repo  = 'gabrielelana/vim-markdown'
+# on_ft = 'markdown'
+
+# 行末の不要な空白を可視化&削除
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
 

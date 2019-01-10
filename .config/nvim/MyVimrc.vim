@@ -4,11 +4,11 @@ set relativenumber
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
 " カーソル行のある行を画面中央に表示
-" @が教えてくれた！！ありがとう
+" が教えてくれた！！ありがとう
 " カーソルから何行下を強制的に開けるかを設定しているらしい
 " あとでトグルにできるようにする
 set scrolloff=0
- 
+
 nnoremap <F4> :let &scrolloff=1000-&scrolloff<CR>
 
 " タブ・インデント
@@ -18,6 +18,14 @@ set autoindent    " 自動インデント
 set smartindent   " 構文チェックしてインデント
 set shiftwidth=2  " smartindentで増減する幅
 set expandtab     " インデントを行う場合、スペースで埋める
+" Makefileのみタブを挿入
+let _curfile=expand("%:r")
+if _curfile == 'makefile'
+  set noexpandtab
+endif
+" 不可視文字の可視化
+set list
+set listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
 
 " 文字列検索
 set incsearch  " インクリメンタルサーチ。 1文字ごとに検索を行う
@@ -37,39 +45,19 @@ let g:always_center_flag = 1
 function! Always_center_toggle()
   if g:always_center_flag == 1
     let g:always_center_flag = 0
+    set so=0
     augroup always-center
       autocmd!
     augroup END
   else
     let g:always_center_flag = 1
+    set so=999
     augroup always-center
       autocmd!
       autocmd CursorMoved * :call feedkeys('zz', 'n')
     augroup END
   endif
 endfunction
-
-" 非効率的な方法
-" nnoremap j jzz
-" nnoremap k kzz
-" nnoremap h hzz
-" nnoremap l lzz
-" let zz_movement = 0
-"function! Flag_zz_movement()
-"  if g:zz_movement == 0
-"    g:zz_movement = 1
-"    nnoremap j j
-"    nnoremap k k
-"    nnoremap h h
-"    nnoremap l l
-"  else
-"    g:zz_movement = 0
-"    nnoremap j jzz
-"    nnoremap k kzz
-"    nnoremap h hzz
-"    nnoremap l lzz
-"  fi
-"endfunction
 
 nnoremap <F1> :call Always_center_toggle()<CR>
 
@@ -78,3 +66,6 @@ set autochdir
 
 " clipboardとの連携
 set clipboard+=unnamedplus
+
+" スワップファイルを使わない設定にする
+set noswapfile

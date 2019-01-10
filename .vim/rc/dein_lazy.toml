@@ -29,7 +29,3 @@ on_cmd = ['Fontzoom']
 on_map = ['<Plug>(fontzoom-']
 gui    = 1
 
-# markdown形式ファイルで読み込む
-[[plugins]]
-repo  = 'gabrielelana/vim-markdown'
-on_ft = ['markdown']
