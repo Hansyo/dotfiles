@@ -1,14 +1,9 @@
 scriptencoding utf-8
 
-" 以下から自分で組んで見る設定
-" これであっているかどうかわからないことが多い
-" プラグインの設定ファイル読み込み
-source ~/.config/nvim/dein.vim
-source ~/.config/nvim/NERDTree.vim
-source ~/.config/nvim/markdown.vim
-
-" プラグインはここまで-----------------------------------------
-
-" 純粋な個人設定-----------------------------------------------
-" 自分で作ったファイルの読み込み
-source ~/.config/nvim/MyVimrc.vim
+" 自作のvimrcローダー
+" init-loader.elっぽくしたかったけど、
+" 正規表現の比較で、アトム化が行えなかったため断念。
+" なんでなんだろ...
+" あと、ロードされるまでに間がある
+let g:vimrc_folder = "~/.config/nvim/vim/rc"
+source ~/.config/nvim/loader.vim
