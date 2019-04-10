@@ -1,5 +1,5 @@
 " NERDTreeの設定---------------------------------------
-nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+nnoremap <silent> <C-q> :NERDTreeToggle<CR>
 
 " 表示幅
 let g:NERDTreeWinSize=50

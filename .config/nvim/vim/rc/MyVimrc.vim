@@ -4,9 +4,9 @@ set relativenumber
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
 " カーソル行のある行を画面中央に表示
-" が教えてくれた！！ありがとう
+" @GarActが教えてくれた！！ありがとう
 " カーソルから何行下を強制的に開けるかを設定しているらしい
-" あとでトグルにできるようにする
+" トグルできるようにした
 set scrolloff=0
 
 nnoremap <F4> :let &scrolloff=1000-&scrolloff<CR>
@@ -69,3 +69,15 @@ set clipboard+=unnamedplus
 
 " スワップファイルを使わない設定にする
 set noswapfile
+
+" ファイルタイプの自動設定
+filetype on
+
+" helpの言語設定
+" set helplang=ja,en
+
+" vimのruntimepathの設定
+" set runtimepath+=/home/hansy/.vim/doc
+
+" nimのfiletype設定
+" au BufRead,BufNewFile *.nim set filetype=nim

@@ -1,0 +1,1 @@
+/home/hansy/.cache/dein/repos/github.com/vim-jp/vimdoc-ja/syntax/help_ja.vim

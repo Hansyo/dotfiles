@@ -29,3 +29,7 @@ on_cmd = ['Fontzoom']
 on_map = ['<Plug>(fontzoom-']
 gui    = 1
 
+# nim on vim
+[[ plugins ]]
+repo = 'zsh/nim.vim'
+on_ft = ['nim']
