@@ -1,0 +1,118 @@
+_echo '  start set PATH'
+## export(PATH)関連
+export PATH=$PATH:~/.bin:~/.nimble/bin:~/.local/bin:~/.bin/arduino-1.8.7:~/opt/cross/bin
+export PYTHONPATH=/usr/local/lib/python3.6/dist-packages:$PYTHONPATH
+export XDG_CONFIG_HOME=~/.config
+export PREFIX="$HOME/opt/cross"
+export TARGET=i686-elf
+export PGDATA=/usr/local/var/postgres
+# export VIMRUNTIME=$VIMRUNTIME:~/.vim/
+
+_echo '  start alias'
+# alias関連
+#alias touchpad-disable='xinput disable 12'
+#alias touchpad-enabe='xinput enable 12'
+alias touchpad-on-off='touchpad-on-off.sh'
+alias reload='source ~/.zshrc'
+alias ls='\ls --color=auto'
+alias more='\lv'
+alias django-go='python3 manage.py runserver'
+alias venv-start='source bin/activate'
+alias show-ssh-settings='cat ~/.ssh/config'
+
+_echo '  start compinit'
+# コマンドの自動補完
+# どうやらzplugでやってるっぽい？
+# とりあえず動かさないようにしてみた
+# autoload -U compinit
+# compinit
+## 関連して、間違ったら修正を表示
+setopt correct
+
+# ヒストリの設定
+## ヒストリの共通化
+setopt share_history
+
+## 場所
+HISTFILE=~/.zsh_history
+
+## 個数
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+## 重複の可否(今回は重複なし)
+# setopt hist_ignore_dups
+
+### 重複したら古いコマンドを消す
+setopt hist_ignore_all_dups
+
+## スペースで始まるコマンドを履歴に残さない
+setopt hist_ignore_space
+
+_echo '  start pushd'
+# cdしたら自動でpushdする
+setopt auto_pushd
+
+_echo '  start bindkey'
+# bindey関連
+## emacs風のキーバインド
+bindkey -e
+
+## その他のキーバインド
+
+_echo '  start user_Made'
+
+# exportのもろもろ
+export EDITOR='vim'
+export VISUAL='emacs -nw'
+
+
+
+# 自作関数
+## emacsを起動する際に&をくっつける
+function _emacs() {
+  emacs $* &
+}
+
+## 現在のPATHの一覧を表示
+function echo_PATH() {
+  echo $PATH > ~/PATH.txt
+  sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
+  cp ~/PATH.cache ~/PATH.txt
+  rm ~/PATH.cache
+  if [ $# -ge 1 ];then
+     if [ $1 = "more" ];then
+        more ~/PATH.txt
+     elif [ $1 = "cat" ];then
+        cat ~/PATH.txt
+     else
+        echo 'Please select "cat" or "more".'
+     fi
+  else
+    cat ~/PATH.txt
+  fi
+}
+
+## gccした時にファイル名と同じ実行ファイルを生成する
+function gcc() {
+    out=`echo $1 | awk -F '.' '{print $1}'`
+    gcc $1 -o ${out}
+}
+
+#cdls
+clear_flag=true
+function toggle_clear_flag(){
+  if $clear_flag;then
+    clear_flag=false;
+  else
+    clear_flag=true;
+  fi
+}
+
+function cdls(){
+  if $clear_flag;then
+    cd $@ && clear && ls;
+  else
+    cd $@ && ls;
+  fi
+}

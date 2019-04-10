@@ -1,10 +1,12 @@
+PS1=$'%n:%c/ %(!.#.$)'
+
 function man ()
 {
 LANG=ja_JP.utf8 /usr/bin/man -Tutf8 $@ | lv
 }
 
-# autoload -U compinit
-# compinit -u
+#autoload -U compinit
+#compinit -u
 
 setopt share_history
 
@@ -17,13 +19,12 @@ bindkey "^N" history-beginning-search-forward-end
 bindkey -s '^z' '\eqfg %$EDITOR:t\n'
 
 export PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-export PATH=$PATH:/home/student/j15/j15436/.local/bin:/home/student/j15/j15436/programs/google-cloud-sdk/bin
 
 export EDITOR='vim'
 export E_EDITOR='emacs -nw'
-export HOST=(hostname)
+export HOST=$(hostname)
 ##export JLESSCHARSET=japanese-euc
-exportJLESSCHARSET=utf-8
+export JLESSCHARSET=utf-8
 ##export LANG=ja_JP.eucJP
 export LANG=ja_JP.UTF-8
 export LANGUAGE="ja_JP:ja:en_GB:en"
@@ -60,13 +61,13 @@ export G_FILENAME_ENCODING=utf-8
 ### for acroread 9.x
 ### Stop to search for Japanese font msmincho.ttc, msgothic.ttc
 export ACRO_DISABLE_FONT_CONFIG=1
-## バグるから消した
-# alias |\
-# while read line
-# do
-# aname=$(echo $line | cut -d'=' -f1)
-# unalias $aname
-# done
+
+alias |\
+while read line
+do
+aname=$(echo $line | cut -d'=' -f1)
+unalias $aname
+done
 
 setopt extended_history
 alias cc='/home/local/bin/gcc-cp.sh'
@@ -134,6 +135,11 @@ setopt auto_pushd
 
 ## 自作関数
 
+#cdls
+function cdls(){
+cd $@ && clear && ls;
+}
+
 function mcdir(){
 mkdir $1 ; cd $1 ;
 }
@@ -158,13 +164,23 @@ function _cd() {
 cd $1; clear
 }
 
+function porg-install() {
+porg -lp $1 "make install"
+}
+
+function _make_configure() {
+./configure --prefix=$HOME/local
+}
+#autoload perdict-on
+#predict-on
+
 #bin のパスとかもろもろ
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/lib
 export GEM_HOME=~/.gem
 
 #ssh自動化
 alias _ssh='ssh j15436@10.7.1.2'
-alias gpp='g++'
+alias _ssh_cd='ssh j15436@10.7.1.2 "cd $(pwd)"'
 
 # reload のbindkey
 bindkey -r "^G"

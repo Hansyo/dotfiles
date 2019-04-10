@@ -1,8 +1,7 @@
 zplug_echo_show=false
-ZPLUG_HOME=~/.zplug
 
 _echo '  start source ~/.zplug/init.zsh' $zplug_echo_show
-source $ZPLUG_HOME/init.zsh
+source ~/.zplug/init.zsh
 
 # 入れたいプラグインを書く
 # zplug "入れたい奴"

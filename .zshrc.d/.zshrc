@@ -1,27 +1,24 @@
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.zsh_histfile
-HISTSIZE=1000
-SAVEHIST=1000
-bindkey -e
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-zstyle :compinstall filename '/home/saito/.zshrc'
+print_message=false
+function _echo() {
+    if $print_message;then
+        echo $1
+    elif [ $# -eq 2 ];then
+        if $2;then
+            echo $1
+        fi
+    fi
+}
 
-##autoload -Uz compinit
-##compinit
-# End of lines added by compinstall
-if [[ $TERM = dumb ]]; then
-  unset zle_bracketed_paste
-fi
+_echo 'start .zshrc_usability'
+# コマンド関連
+source ~/.zshrc_usability
+_echo 'end .zshrc_usability'
+_echo 'start .zshrc_looks'
+# 見た目関連
+source ~/.zshrc_looks
+_echo 'end .zshrc_looks'
 
-source ~/.zshrc.hash
-source ~/.zshrc.custom
-source ~/.zshrc.laptop
-source ~/.zshrc.usability
-##source ~/.zshrc.tmux
-
-# The next line updates PATH for the Google Cloud SDK.
-# if [ -f '/home/student/j15/j15436/programs/google-cloud-sdk/path.zsh.inc' ]; then . '/home/student/j15/j15436/programs/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-# if [ -f '/home/student/j15/j15436/programs/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/student/j15/j15436/programs/google-cloud-sdk/completion.zsh.inc'; fi
+# zplug
+_echo 'start .zshrc_zplug' false
+source ~/.zshrc_zplug
+_echo 'end .zshrc_zplug' false
