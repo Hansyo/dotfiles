@@ -3,8 +3,8 @@ autoload -Uz colors
 colors
 
 # プロンプトの設定
-## git-promptの呼び出し
-source ~/git/zsh-git-prompt/zshrc.sh
+## zsh-git-promptの呼び出し
+source ~/.zshrc.d/zsh-git-prompt/zshrc.sh
 ## 実際の見た目
 PROMPT='
 path %d

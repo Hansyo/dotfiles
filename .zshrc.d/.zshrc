@@ -11,14 +11,14 @@ function _echo() {
 
 _echo 'start .zshrc_usability'
 # コマンド関連
-source ~/.zshrc_usability
+source ~/.zshrc.d/.zshrc_usability
 _echo 'end .zshrc_usability'
 _echo 'start .zshrc_looks'
 # 見た目関連
-source ~/.zshrc_looks
+source ~/.zshrc.d/.zshrc_looks
 _echo 'end .zshrc_looks'
 
 # zplug
 _echo 'start .zshrc_zplug' false
-source ~/.zshrc_zplug
+source ~/.zshrc.d/.zshrc_zplug
 _echo 'end .zshrc_zplug' false

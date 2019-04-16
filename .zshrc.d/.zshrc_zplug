@@ -7,6 +7,14 @@ source ~/.zplug/init.zsh
 # zplug "入れたい奴"
 # みたいな感じで書く
 
+## if zplug is nothing
+## install zplug
+if test ! -d ${HOME}/.zplug
+then
+  _echo '  start install zplug' $zplug_echo_show 
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+
 _echo '  start zplugs' $zplug_echo_show
 ## zplugをzplug自身で管理
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'

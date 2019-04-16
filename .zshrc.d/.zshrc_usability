@@ -19,6 +19,7 @@ alias more='\lv'
 alias django-go='python3 manage.py runserver'
 alias venv-start='source bin/activate'
 alias show-ssh-settings='cat ~/.ssh/config'
+alias pacman='sudo pacman'
 
 _echo '  start compinit'
 # コマンドの自動補完
