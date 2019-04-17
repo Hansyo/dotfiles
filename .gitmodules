@@ -1,3 +1,6 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = https://github.com/Hansyo/.emacs.d.git
+[submodule ".zshrc.d/zsh-git-prompt"]
+	path = .zshrc.d/zsh-git-prompt
+	url = git@hansy.github.com:Hansyo/zsh-git-prompt.git
