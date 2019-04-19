@@ -64,8 +64,8 @@ bindkey -e
 _echo '  start user_Made'
 
 # exportのもろもろ
-export EDITOR='vim'
-export VISUAL='emacs -nw'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 
 
