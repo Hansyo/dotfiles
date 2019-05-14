@@ -22,3 +22,8 @@ _echo 'end .zshrc_looks'
 _echo 'start .zshrc_zplug' false
 source ~/.zshrc.d/.zshrc_zplug
 _echo 'end .zshrc_zplug' false
+
+# zkbd
+_echo 'start .zshrc_zkbd' false
+source ~/.zshrc.d/.zshrc_zkbd
+_echo 'end .zshrc_zkbd' false
