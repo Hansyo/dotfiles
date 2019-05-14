@@ -99,7 +99,7 @@ function echo_PATH() {
 ## gccした時にファイル名と同じ実行ファイルを生成する
 function gcc() {
     out=`echo $1 | awk -F '.' '{print $1}'`
-    gcc $1 -o ${out}
+    gcc $@ -o ${out}
 }
 
 #cdls
