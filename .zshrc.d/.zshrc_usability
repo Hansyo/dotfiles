@@ -123,18 +123,19 @@ function cdls(){
 # gitのアカウントを登録する
 # ~/.git-usersファイルを作り、そこに名前とメルアドを入れておく
 function gituser-add () {
-	if test ! $1;then 
-		echo "Please type 'gituser-add USERNAME'"
-		return
-	fi
-	# ユーザー名で、~/.git-usersを検索する
-	TARGET_STRING=`grep $1 ~/.git-users`
-	if test ! ${TARGET_STRING};then
-		echo "$1 does not exist."
-		return
-	fi
-	GIT_USER_ARRAY=(`echo ${TARGET_STRING} | tr -s ':' ' '`)
-	git config user.name "${GIT_USER_ARRAY[1]}"
-	git config user.email "${GIT_USER_ARRAY[2]}"
-	git config --list | grep user
+  if test ! $1;then
+    echo "Please type 'gituser-add USERNAME'"
+    return
+  fi
+  # ユーザー名で、~/.git-usersを検索する
+  TARGET_STRING=`grep $1 ~/.git-users`
+  if test ! ${TARGET_STRING};then
+    echo "$1 does not exist."
+    return
+  fi
+  GIT_USER_ARRAY=(`echo ${TARGET_STRING} | tr -s ':' ' '`)
+  git config user.name "${GIT_USER_ARRAY[1]}"
+  git config user.email "${GIT_USER_ARRAY[2]}"
+  git config user.signingkey "${GIT_USER_ARRAY[3]}"
+  git config --list | grep user
 }
