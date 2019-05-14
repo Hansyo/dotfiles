@@ -16,10 +16,12 @@ _echo '  start alias'
 alias reload='source ~/.zshrc'
 alias ls='\ls --color=auto'
 alias more='\lv'
+alias lv='\lv'
 alias django-go='python3 manage.py runserver'
 alias venv-start='source bin/activate'
 alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
+alias rm='rm -i'
 
 _echo '  start compinit'
 # コマンドの自動補完
