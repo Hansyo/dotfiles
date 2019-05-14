@@ -11,7 +11,7 @@ source ~/.zplug/init.zsh
 ## install zplug
 if test ! -d ${HOME}/.zplug
 then
-  _echo '  start install zplug' $zplug_echo_show 
+  _echo '  start install zplug' $zplug_echo_show
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 fi
 
