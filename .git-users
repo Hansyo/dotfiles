@@ -1,0 +1,3 @@
+# #から始まる行はコメント扱いとする
+# user.name:user.email:gpg-key-usernameとする
+# user.nameとかに:は入らないものとする。(パースがめんどくさすぎるから)
