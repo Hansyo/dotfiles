@@ -53,6 +53,14 @@ repo = 'scrooloose/nerdtree'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# vimで便利にgitを使うためのやつ
+# 個人的には、行の色が変わってほしい
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 # インデントの可視化
 [[plugins]]
 repo = 'Yggdroot/indentLine'
