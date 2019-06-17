@@ -139,3 +139,11 @@ function gituser-add () {
   git config user.signingkey "${GIT_USER_ARRAY[3]}"
   git config --list | grep user
 }
+
+# gitignore.ioからデータ引っ張って来て、
+# 勝手にgitignoreを作ってもらう
+function make-gitignore_by_gitignore_io () {
+  QUERY=$@
+  echo ${QUERY// /,}
+  curl https://gitignore.io/api/${QUERY// /,} >> .gitignore
+}
