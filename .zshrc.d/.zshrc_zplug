@@ -33,6 +33,9 @@ zplug "zsh-users/zsh-completions"
 ## oh-my-zshのプラグインなど
 zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
 
+## zsh-autoenv
+zplug "Tarrasch/zsh-autoenv"
+
 _echo '  end zplugs' $zplug_echo_show
 
 _echo ' start install plugins' $zplug_echo_show
