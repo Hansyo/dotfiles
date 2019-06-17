@@ -27,3 +27,15 @@ _echo 'end .zshrc_zplug' false
 _echo 'start .zshrc_zkbd' false
 source ~/.zshrc.d/.zshrc_zkbd
 _echo 'end .zshrc_zkbd' false
+
+# hash
+_echo 'start .zshrc_hash' false
+source ~/.zshrc.d/.zshrc_hash
+_echo 'end .zshrc_hash' false
+
+# arch linux only
+if test $(uname -n) = "archlinux";then
+  _echo 'start .zshrc_arch' false
+  source ~/.zshrc.d/.zshrc_arch
+  _echo 'end .zshrc_arch'
+fi
