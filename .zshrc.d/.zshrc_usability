@@ -7,6 +7,9 @@ export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 export PGDATA=/usr/local/var/postgres
 # export VIMRUNTIME=$VIMRUNTIME:~/.vim/
+export LESS='-R' #lessコマンドを常時カラー表示できるようにする
+export LANG=ja_JP.UTF-8
+export LANGUAGE=ja
 
 _echo '  start alias'
 # alias関連
@@ -14,14 +17,13 @@ _echo '  start alias'
 #alias touchpad-enabe='xinput enable 12'
 #alias touchpad-on-off='touchpad-on-off.sh'
 alias reload='source ~/.zshrc'
-alias ls='\ls --color=auto'
-alias more='\lv'
-alias lv='\lv'
+alias more='\less -R'
 alias django-go='python3 manage.py runserver'
 alias venv-start='source bin/activate'
 alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
 alias rm='rm -i'
+alias ls="ls --color=always"
 
 _echo '  start compinit'
 # コマンドの自動補完
