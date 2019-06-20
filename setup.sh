@@ -12,12 +12,18 @@ for directory in `\find . -maxdepth 1 -type d`; do
 			cd .config
 			for conf_d in `\find . -maxdepth 1 -type d`; do
 				if ! test ${conf_d} = ".";then
-					ln -sd ${SCRIPT_DIR}/${conf_d:2} ${HOME}/.config/${conf_d:2}
+					if [[ ! -h ${HOME}/.config/${conf_d:2} ]];then
+						echo "linking ${SCRIPT_DIR}/${directory:2}/${conf_d:2} -> ${HOME}/${directory:2}/${conf_d:2}"
+						ln -sd ${SCRIPT_DIR}/${conf_d:2} ${HOME}/.config/${conf_d:2}
+					fi
 				fi
 			done
 			cd ..
 		else
-			ln -sd ${SCRIPT_DIR}/${directory:2} ${HOME}/${directory:2}
+			if [[ ! -h ${HOME}/${directory:2} ]];then
+				echo "linking ${SCRIPT_DIR}/${directory:2} -> ${HOME}/${directory:2}"
+				ln -sd ${SCRIPT_DIR}/${directory:2} ${HOME}/${directory:2}
+			fi
 		fi
 	fi
 done
