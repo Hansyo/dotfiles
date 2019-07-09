@@ -82,3 +82,6 @@ filetype on
 
 " nimのfiletype設定
 " au BufRead,BufNewFile *.nim set filetype=nim
+
+" spell check機能の対象言語の設定
+set spelllang=en,cjk
