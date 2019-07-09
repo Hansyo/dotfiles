@@ -32,6 +32,7 @@ set incsearch  " インクリメンタルサーチ。 1文字ごとに検索を�
 set ignorecase " 検索パターンに大文字小文字を区別しない
 set smartcase  " 検索パターンに大文字を含んでいたら区別する
 set hlsearch   " 検索結果をハイライト
+"search結果のハイライトを消す
 nnoremap <silent><Esc><Esc> :noh<CR>
 " 移動方法の選択
 
