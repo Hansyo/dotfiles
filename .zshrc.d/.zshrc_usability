@@ -24,6 +24,7 @@ alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
 alias rm='rm -i'
 alias ls="ls --color=always"
+alias activate="source bin/activate"
 
 _echo '  start compinit'
 # コマンドの自動補完
