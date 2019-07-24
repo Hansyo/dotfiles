@@ -78,32 +78,32 @@ export VISUAL='nvim'
 # 自作関数
 ## emacsを起動する際に&をくっつける
 function _emacs() {
-  emacs $* &
+  command emacs $* &
 }
 
 ## 現在のPATHの一覧を表示
 function echo_PATH() {
   echo $PATH > ~/PATH.txt
-  sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
-  cp ~/PATH.cache ~/PATH.txt
-  rm ~/PATH.cache
+  builtin sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
+  builtin cp ~/PATH.cache ~/PATH.txt
+  builtin rm ~/PATH.cache
   if [ $# -ge 1 ];then
      if [ $1 = "more" ];then
-        more ~/PATH.txt
+        builtin more ~/PATH.txt
      elif [ $1 = "cat" ];then
-        cat ~/PATH.txt
+        builtin cat ~/PATH.txt
      else
         echo 'Please select "cat" or "more".'
      fi
   else
-    cat ~/PATH.txt
+    builtin cat ~/PATH.txt
   fi
 }
 
 ## gccした時にファイル名と同じ実行ファイルを生成する
 function gcc() {
     out=`echo $1 | awk -F '.' '{print $1}'`
-    gcc $@ -o ${out}
+    command gcc $@ -o ${out}
 }
 
 #cdls
@@ -118,9 +118,9 @@ function toggle_clear_flag(){
 
 function cdls(){
   if $clear_flag;then
-    cd $@ && clear && ls;
+    builtin cd $@ && clear && ls;
   else
-    cd $@ && ls;
+    builtin cd $@ && ls;
   fi
 }
 
