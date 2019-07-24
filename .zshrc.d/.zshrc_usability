@@ -1,6 +1,7 @@
 _echo '  start set PATH'
 ## export(PATH)関連
 export PATH=$PATH:~/.bin:~/.nimble/bin:~/.local/bin:~/.bin/arduino-1.8.7:~/opt/cross/bin
+export PATH=$PATH:~/.config/composer/vendor/bin
 export PYTHONPATH=/usr/local/lib/python3.6/dist-packages:$PYTHONPATH
 export XDG_CONFIG_HOME=~/.config
 export PREFIX="$HOME/opt/cross"
