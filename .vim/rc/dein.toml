@@ -49,10 +49,6 @@ repo = 'Shougo/denite.nvim'
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
-# ステータスラインの表示強化
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
@@ -82,50 +78,6 @@ repo = 'bronson/vim-trailing-whitespace'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
-# シンタックスハイライト用
+# syntax checker
 [[plugins]]
-repo='thinca/vim-quickrun'
-
-[[plugins]]
-repo='osyo-manga/shabadou.vim'
-
-[[plugins]]
-repo='osyo-manga/vim-watchdogs'
-
-# nim.nim? no. It's nim.vim!!
-# 実際に、nim.nimを呼び出そうとして、
-# インストール失敗した経験があるので、後学のために...
-[[plugins]]
-repo='scrooloose/syntastic'
-
-[[plugins]]
-repo='zah/nim.vim'
-
-# vim-session
-[[plugins]]
-repo = 'xolox/vim-session'
-depends = ['xolox/vim-misc']
-hook_add = '''
-    " # 現在のディレクトリ直下の .vimsessions/ を取得
-    let s:local_session_directory = xolox#misc#path#merge(getcwd(), '.vimsessions')
-    " # 存在すれば
-    if isdirectory(s:local_session_directory)
-      " # session保存ディレクトリをそのディレクトリの設定
-      let g:session_directory = s:local_session_directory
-      " # vimを辞める時に自動保存
-      let g:session_autosave = 'yes'
-      " # 引数なしでvimを起動した時にsession保存ディレクトリのdefault.vimを開く
-      let g:session_autoload = 'yes'
-      " # 1分間に1回自動保存
-      let g:session_autosave_periodic = 1
-    else
-      " # デフォルトの保存ディレクトリを変更する(NeoVimの場合)
-      let g:session_directory = '~/.config/nvim/sessions'
-      let g:session_autosave = 'no'
-      let g:session_autoload = 'no'
-      let g:session_autosave_periodic = 0
-    endif
-    unlet s:local_session_directory
-	'''
-[[plugins]]
-repo = 'xolox/vim-misc'
+repo = 'dense-analysis/ale'
