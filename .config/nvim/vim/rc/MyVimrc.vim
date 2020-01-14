@@ -78,7 +78,7 @@ filetype on
 " set helplang=ja,en
 
 " vimのruntimepathの設定
-" set runtimepath+=/home/hansy/.vim/doc
+set runtimepath+=/home/hansy/.vim
 
 " nimのfiletype設定
 " au BufRead,BufNewFile *.nim set filetype=nim
