@@ -1,0 +1,28 @@
+# zpluginがなければ、zpluginをインストール
+if test ! -d ${HOME}/.zplugin
+then
+  _echo '  start install zplugin' $zplug_echo_show
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
+fi
+
+# pluginの追加
+# 基本的にすべて遅延読込する
+# 遅延してはいけないpluginはそんなにないはず
+
+## 構文ハイライト
+zplugin ice wait'!0'
+zplugin light zsh-users/zsh-syntax-highlighting
+
+## 前使ったコマンドを薄く表示してくれる
+zplugin ice wait'!0'
+zplugin light zsh-users/zsh-autosuggestions
+
+## タイプ補完?よくわからんが入れてみる
+zplugin ice wait'!0'
+zplugin light zsh-users/zsh-completions
+
+## gitの便利なやつ？いらないかも
+zplugin ice wait'!0'
+zplugin snippet OMZ::lib/git.zsh
+zplugin ice wait'!0'
+zplugin snippet OMZ::plugins/git/git.plugin.zsh
