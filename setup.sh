@@ -30,3 +30,11 @@ done
 
 # 更に、個別に必要となりうるものは、全部手動でリンクする
 ln -sf ${SCRIPT_DIR}/.zshrc.d/.zshrc ${HOME}/.zshrc
+
+for f in `\find . -maxdepth 1 -type f`;do
+  str=`echo $f | cut -c 3- `;
+  if ( test `echo $str | cut -c 1` = "." && test $str != ".gitmodules" && test $str != ".gitignore" ); then
+    ln -sf ${SCRIPT_DIR}/$str ${HOME}/$str
+    echo "linking ${SCRIPT_DIR}/$str -> ${HOME}/$str"
+  fi
+done
