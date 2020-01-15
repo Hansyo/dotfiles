@@ -11,7 +11,7 @@ function _echo() {
 
 _echo 'start .zshrc_usability'
 # コマンド関連
-source ~/.zshrc.d/.zshrc_usability
+#source ~/.zshrc.d/.zshrc_usability
 _echo 'end .zshrc_usability'
 _echo 'start .zshrc_looks'
 # 見た目関連
@@ -20,12 +20,12 @@ _echo 'end .zshrc_looks'
 
 # zkbd
 _echo 'start .zshrc_zkbd' false
-source ~/.zshrc.d/.zshrc_zkbd
+#source ~/.zshrc.d/.zshrc_zkbd
 _echo 'end .zshrc_zkbd' false
 
 # hash
 _echo 'start .zshrc_hash' false
-source ~/.zshrc.d/.zshrc_hash
+#source ~/.zshrc.d/.zshrc_hash
 _echo 'end .zshrc_hash' false
 
 # arch linux only
@@ -53,3 +53,9 @@ _echo 'start .zshrc_zplugin' false
 source ~/.zshrc.d/.zshrc_zplugin
 _echo 'end .zshrc_zplugin' false
 
+zplugin ice wait
+zplugin snippet "${HOME}/.zshrc.d/.zshrc_usability"
+zplugin ice wait
+zplugin snippet "${HOME}/.zshrc.d/.zshrc_zkbd"
+zplugin ice wait
+zplugin snippet "${HOME}/.zshrc.d/.zshrc_hash"
