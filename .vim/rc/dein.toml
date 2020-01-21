@@ -18,11 +18,6 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
-# ブランチやタグを指定したいとき
-[[plugins]]
-repo = 'delphinus35/typescript-vim'
-rev  = 'colorize-template-strings'
-
 # 特定の条件で読み込みたいとき
 [[plugins]]
 repo = 'elzr/vim-json'
@@ -81,3 +76,10 @@ repo = 'vim-jp/vimdoc-ja'
 # syntax checker
 [[plugins]]
 repo = 'dense-analysis/ale'
+
+# vim-lsp
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
