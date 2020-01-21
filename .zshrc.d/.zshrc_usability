@@ -24,6 +24,7 @@ alias django-go='python3 manage.py runserver'
 alias venv-start='source bin/activate'
 alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
+alias powerpill='sudo powerpill'
 alias rm='rm -i'
 alias ls="ls --color=always"
 alias activate="source bin/activate"
