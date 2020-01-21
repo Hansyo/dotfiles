@@ -85,3 +85,5 @@ set runtimepath+=/home/hansy/.vim
 
 " spell check機能の対象言語の設定
 set spelllang=en,cjk
+
+colorscheme darkblue
