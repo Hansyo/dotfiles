@@ -26,6 +26,9 @@ zplugin ice wait'!0'
 zplugin snippet OMZ::lib/git.zsh
 zplugin ice wait'!0'
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zplugin ice wait'!0'
+zplugin light Hansyo/zsh-git-prompt
+
 
 # compinit
 autoload -Uz compinit; compinit

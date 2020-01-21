@@ -53,9 +53,9 @@ _echo 'start .zshrc_zplugin' false
 source ~/.zshrc.d/.zshrc_zplugin
 _echo 'end .zshrc_zplugin' false
 
-zplugin ice wait
+zplugin ice wait'!0'
 zplugin snippet "${HOME}/.zshrc.d/.zshrc_usability"
-zplugin ice wait
+zplugin ice wait'!0'
 zplugin snippet "${HOME}/.zshrc.d/.zshrc_zkbd"
-zplugin ice wait
+zplugin ice wait'!0'
 zplugin snippet "${HOME}/.zshrc.d/.zshrc_hash"
