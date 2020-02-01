@@ -18,11 +18,6 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
-# 特定の条件で読み込みたいとき
-[[plugins]]
-repo = 'elzr/vim-json'
-if   = '''! has('kaoriya')'''
-
 # 依存関係を指定したいとき
 [[plugins]]
 repo    = 'vim-airline/vim-airline'
@@ -34,7 +29,7 @@ repo = 'vim-airline/vim-airline-themes'
 
 # カラースキーム
 [[plugins]]
-repo = 'sjl/badwolf'
+repo = 'junegunn/seoul256.vim'
 
 # denite.vim
 [[plugins]]

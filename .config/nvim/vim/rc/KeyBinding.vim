@@ -5,9 +5,9 @@
 nnoremap <silent><C-SPACE> v
 nnoremap <silent><C-x><Space> <C-V>
 
-nnoremap <C-e> $
-nnoremap <C-a> ^
-nnoremap <C-S-a> 0
+" nnoremap <C-e> $
+" nnoremap <C-a> ^
+" nnoremap <C-S-a> 0
 
 nnoremap t <C-w>
 

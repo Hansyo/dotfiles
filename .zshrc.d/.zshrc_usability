@@ -21,6 +21,7 @@ _echo '  start alias'
 alias reload='exec zsh'
 alias more='\less -R'
 alias django-go='python3 manage.py runserver'
+alias django="./manage.py"
 alias venv-start='source bin/activate'
 alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
@@ -86,19 +87,19 @@ function _emacs() {
 ## 現在のPATHの一覧を表示
 function echo_PATH() {
   echo $PATH > ~/PATH.txt
-  builtin sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
-  builtin cp ~/PATH.cache ~/PATH.txt
-  builtin rm ~/PATH.cache
+  command sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
+  command cp ~/PATH.cache ~/PATH.txt
+  command rm ~/PATH.cache
   if [ $# -ge 1 ];then
      if [ $1 = "more" ];then
-        builtin more ~/PATH.txt
+        command more ~/PATH.txt
      elif [ $1 = "cat" ];then
-        builtin cat ~/PATH.txt
+        command cat ~/PATH.txt
      else
         echo 'Please select "cat" or "more".'
      fi
   else
-    builtin cat ~/PATH.txt
+    command cat ~/PATH.txt
   fi
 }
 
@@ -152,4 +153,17 @@ function make-gitignore_by_gitignore_io () {
   QUERY=$@
   echo ${QUERY// /,}
   curl https://gitignore.io/api/${QUERY// /,} >> .gitignore
+}
+
+# autoenvを言語ごとに自動設定する
+function copy-default-autoenv () {
+  if test $# != 1 ;then
+    echo "usage: $ copy-default-autoenv [language]"
+  else
+    if [[ -e $HOME/.zshrc.d/autoenv_default/$1 ]];then
+      cp $HOME/.zshrc.d/autoenv_default/$1/.autoenv* .
+    else
+      echo "$1's default autoenv does not exist."
+    fi
+  fi
 }
