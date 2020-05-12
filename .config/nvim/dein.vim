@@ -36,4 +36,5 @@ if dein#check_install()
   call dein#install()
 endif
 
-"
+" 不要なプラグインを自動で削除
+call map(dein#check_clean(), "delete(v:val, 'rf')")

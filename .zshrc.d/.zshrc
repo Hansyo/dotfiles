@@ -1,3 +1,5 @@
+fpath+=~/.zfunc
+
 print_message=false
 function _echo() {
     if $print_message;then
@@ -59,3 +61,10 @@ zplugin ice wait'!0'
 zplugin snippet "${HOME}/.zshrc.d/.zshrc_zkbd"
 zplugin ice wait'!0'
 zplugin snippet "${HOME}/.zshrc.d/.zshrc_hash"
+
+if $(uname -r | grep Microsoft > /dev/null); then
+  umask 022
+  export DISPLAY=:0
+  export GPG_TTY=$(tty)
+  export PATH=$HOME/.poetry/bin:$PATH
+fi

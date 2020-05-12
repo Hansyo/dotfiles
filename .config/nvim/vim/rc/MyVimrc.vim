@@ -1,3 +1,6 @@
+" vimのruntimepathの設定
+set runtimepath+=~/.vim
+
 " カーソル行からの相対的な行表示
 set number
 set relativenumber
@@ -11,17 +14,21 @@ set scrolloff=999
 nnoremap <F4> :let &scrolloff=1000-&scrolloff<CR>
 
 " タブ・インデント
-set tabstop=2     " タブ幅
-set softtabstop=2
-set autoindent    " 自動インデント
-set smartindent   " 構文チェックしてインデント
-"set shiftwidth=2  " smartindentで増減する幅
-"set expandtab     " インデントを行う場合、スペースで埋める
+" 基本的に自動的に設定されるため、全てコメントアウトすべき
+" 変えたかったら$VIMRUNTIMEを~/.vimにコピってから
+" export VIMRUNTIME=~/.vim
+" を.zshrcなりですること
+" set tabstop=2     " タブ幅
+" set softtabstop=2
+" set autoindent    " 自動インデント
+" set smartindent   " 構文チェックしてインデント
+" set shiftwidth=2  " smartindentで増減する幅
+" set expandtab     " インデントを行う場合、スペースで埋める
 " Makefileのみタブを挿入
-let _curfile=expand("%:r")
-if _curfile == 'makefile'
-  set noexpandtab
-endif
+" let _curfile = expand("%:r")
+" if _curfile == 'makefile'
+"   set noexpandtab
+" endif
 " 不可視文字の可視化
 set list
 set listchars=tab:»-,eol:↲,extends:»,precedes:«,nbsp:%
@@ -69,9 +76,6 @@ set clipboard+=unnamedplus
 
 " スワップファイルを使わない設定にする
 set noswapfile
-
-" ファイルタイプの自動設定
-filetype plugin indent on
 
 " helpの言語設定
 " set helplang=ja,en
