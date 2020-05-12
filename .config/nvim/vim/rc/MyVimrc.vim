@@ -3,11 +3,10 @@ set number
 set relativenumber
 nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 
-" カーソル行のある行を画面中央に表示
-" @GarActが教えてくれた！！ありがとう
+" カーソル行のある行を画面中央に表示 @GarActが教えてくれた！！ありがとう
 " カーソルから何行下を強制的に開けるかを設定しているらしい
 " トグルできるようにした
-set scrolloff=0
+set scrolloff=999
 
 nnoremap <F4> :let &scrolloff=1000-&scrolloff<CR>
 
@@ -16,8 +15,8 @@ set tabstop=2     " タブ幅
 set softtabstop=2
 set autoindent    " 自動インデント
 set smartindent   " 構文チェックしてインデント
-set shiftwidth=2  " smartindentで増減する幅
-set expandtab     " インデントを行う場合、スペースで埋める
+"set shiftwidth=2  " smartindentで増減する幅
+"set expandtab     " インデントを行う場合、スペースで埋める
 " Makefileのみタブを挿入
 let _curfile=expand("%:r")
 if _curfile == 'makefile'
@@ -36,27 +35,27 @@ set hlsearch   " 検索結果をハイライト
 nnoremap <silent><Esc><Esc> :noh<CR>
 " 移動方法の選択
 
-" @rbtnnさんに教えてもらった方法
-augroup always-center
-  autocmd!
-  autocmd CursorMoved * :call feedkeys('zz', 'n')
-augroup END
+"" @rbtnnさんに教えてもらった方法
+"augroup always-center
+"  autocmd!
+"  autocmd CursorMoved * :call feedkeys('zz', 'n')
+"augroup END
 " を関数化して、トグルできるようにした方法
 let g:always_center_flag = 1
 function! Always_center_toggle()
   if g:always_center_flag == 1
     let g:always_center_flag = 0
     set so=0
-    augroup always-center
-      autocmd!
-    augroup END
+    "augroup always-center
+    "  autocmd!
+    "augroup END
   else
     let g:always_center_flag = 1
     set so=999
-    augroup always-center
-      autocmd!
-      autocmd CursorMoved * :call feedkeys('zz', 'n')
-    augroup END
+    "augroup always-center
+    "  autocmd!
+    "  autocmd CursorMoved * :call feedkeys('zz', 'n')
+    "augroup END
   endif
 endfunction
 
@@ -72,7 +71,7 @@ set clipboard+=unnamedplus
 set noswapfile
 
 " ファイルタイプの自動設定
-filetype on
+filetype plugin indent on
 
 " helpの言語設定
 " set helplang=ja,en
@@ -80,10 +79,7 @@ filetype on
 " vimのruntimepathの設定
 set runtimepath+=/home/hansy/.vim
 
-" nimのfiletype設定
-" au BufRead,BufNewFile *.nim set filetype=nim
-
 " spell check機能の対象言語の設定
 set spelllang=en,cjk
 
-colorscheme darkblue
+colorscheme elflord

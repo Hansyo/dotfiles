@@ -1,49 +1,46 @@
 scriptencoding utf-8
 
-"""""""""""""""""""
-" dein.vim
-"""""""""""""""""""
-" プラグインが実際にインストールされるディレクトリ
-let s:dein_dir = expand('~/.config/dein')
-" dein.vim 本体
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+call plug#begin(stdpath('data') . '/plugged')
 
-" dein.vim がなければ github から落としてくる
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
+" gitのいいやつ
+Plug 'airblade/vim-gitgutter'
 
-" 設定開始
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+" インデントの可視化
+Plug 'Yggdroot/indentLine'
 
-  " プラグインリストを収めた TOML ファイル
-  " 予め TOML ファイル（後述）を用意しておく
-  let g:rc_dir    = expand('~/.vim/rc')
-  let s:toml      = g:rc_dir . '/dein.toml'
-  let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+" 末尾の空白の可視化・削除
+Plug 'bronson/vim-trailing-whitespace'
 
-  " TOML を読み込み、キャッシュしておく
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+" vim-docの日本語化
+Plug 'vim-jp/vimdoc-ja'
 
-  " 設定終了
-  call dein#end()
-  call dein#save_state()
-endif
+" vim-lsp
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
 
-" もし、未インストールものものがあったらインストール
-if dein#check_install()
-  call dein#install()
-endif
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
 
+" unite
+Plug 'Shougo/unite.vim'
+
+" nim.vim
+Plug 'zah/nim.vim', {'for': 'nim'}
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" ColorScheme
+
+call plug#end()
 
 " vimrcを現状の方法で分割することに限界を感じた。
-" 理由としては、新しく開いたバッファで設定がうまく反映されないこと
-" があげられる。
+" 理由としては、新しく開いたバッファで設定がうまく反映されないことがあげられる。
 " やっぱり、runtimepathを使うべきだと思うようになったので、改修を行う
 set runtimepath+=~/.config/nvim/vim
 runtime! ~/.config/nvim/vim rc/*.vim
