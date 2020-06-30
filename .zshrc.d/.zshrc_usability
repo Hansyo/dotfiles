@@ -27,6 +27,7 @@ alias show-ssh-settings='cat ~/.ssh/config'
 alias pacman='sudo pacman'
 alias powerpill='sudo powerpill'
 alias rm='rm -i'
+alias cp='cp -i'
 alias ls="ls --color=always"
 alias activate="source bin/activate"
 
@@ -104,10 +105,10 @@ function echo_PATH() {
 }
 
 ## gccした時にファイル名と同じ実行ファイルを生成する
-function gcc() {
-    out=`echo $1 | awk -F '.' '{print $1}'`
-    command gcc $@ -o ${out}
-}
+#function gcc() {
+#    out=`echo $1 | awk -F '.' '{print $1}'`
+#    command gcc $@ -o ${out}
+#}
 
 #cdls
 clear_flag=true
