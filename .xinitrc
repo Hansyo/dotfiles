@@ -64,4 +64,5 @@ if type -a compton > /dev/null 2>&1; then
 elif type -a picom > /dev/null2>&1; then
   picom -b
 fi
+xbindkeys
 exec i3
