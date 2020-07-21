@@ -19,6 +19,8 @@ _echo 'start .zshrc_looks'
 # 見た目関連
 source ~/.zshrc.d/.zshrc_looks
 _echo 'end .zshrc_looks'
+# local settings
+source ~/.zshrc.d/.zshrc_local
 
 # zkbd
 _echo 'start .zshrc_zkbd' false
