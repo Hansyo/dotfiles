@@ -33,3 +33,8 @@ inoremap <silent><expr> <TAB>
   \ <SID>check_back_space() ? "\<TAB>" :
   \ asyncomplete#force_refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" 各種keybind
+nnoremap <Leader>h :LspDefinition<CR>
+nnoremap <Leader>f :LspCodeAction<CR>
+nnoremap <f5> :LspDocumentFormat<CR>

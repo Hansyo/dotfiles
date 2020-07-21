@@ -11,8 +11,6 @@ nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 " トグルできるようにした
 set scrolloff=999
 
-nnoremap <F4> :let &scrolloff=1000-&scrolloff<CR>
-
 " タブ・インデント
 " 基本的に自動的に設定されるため、全てコメントアウトすべき
 " 変えたかったら$VIMRUNTIMEを~/.vimにコピってから

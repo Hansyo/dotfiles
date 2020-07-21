@@ -1,13 +1,19 @@
+" ついにこのvimにLeaderが現れた!!
+let mapleader = "\<Space>"
+
 " emacsライクなキーバインド
 " <C-SPACE>でビジュアルモードとか、
 " <C-e>で行末、<C-a>で行頭とか
 
-nnoremap <silent><C-SPACE> v
-nnoremap <silent><C-x><Space> <C-V>
+"nnoremap <silent><C-SPACE> v
+"nnoremap <silent><C-x><Space> <C-V>
 
 " nnoremap <C-e> $
+nnoremap <Leader>e $
 " nnoremap <C-a> ^
+nnoremap <Leader>a ^
 " nnoremap <C-S-a> 0
+nnoremap <Leader>A 0
 
 nnoremap t <C-w>
 
