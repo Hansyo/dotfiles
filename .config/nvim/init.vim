@@ -15,7 +15,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'vim-jp/vimdoc-ja'
 
 " vim-lsp
-Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/async.vim' "必要なくなったぽい
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
