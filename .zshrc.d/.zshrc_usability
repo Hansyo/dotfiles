@@ -150,10 +150,10 @@ function gituser-add () {
 
 # gitignore.ioからデータ引っ張って来て、
 # 勝手にgitignoreを作ってもらう
-function make-gitignore_by_gitignore_io () {
+function get-gitignore () {
   QUERY=$@
   echo ${QUERY// /,}
-  curl https://gitignore.io/api/${QUERY// /,} >> .gitignore
+  curl -sSL https://gitignore.io/api/${QUERY// /,} >> .gitignore
 }
 
 # autoenvを言語ごとに自動設定する
