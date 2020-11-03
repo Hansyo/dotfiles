@@ -35,6 +35,12 @@ Plug 'zah/nim.vim', {'for': 'nim'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" vim-latex
+Plug 'lervag/vimtex'
+
+" vim-quickrun
+Plug 'thinca/vim-quickrun'
+
 " ColorScheme
 
 call plug#end()
