@@ -1,0 +1,10 @@
+configuration {
+	modi: "windowcd,drun,ssh,run";
+	display-drun:    "Activate";
+	display-run:     "Execute";
+	display-window:  "Window";
+	show-icons:      true;
+	sidebar-mode:    true;
+}
+
+@import "theme.rasi"

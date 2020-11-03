@@ -66,3 +66,4 @@ elif type -a picom > /dev/null2>&1; then
 fi
 xbindkeys
 exec i3
+exec nm-applet
