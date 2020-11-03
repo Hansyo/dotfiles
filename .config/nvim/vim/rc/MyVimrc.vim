@@ -12,15 +12,15 @@ nnoremap <F3> :<C-u>setlocal relativenumber!<CR>
 set scrolloff=999
 
 " タブ・インデント
-" 基本的に自動的に設定されるため、全てコメントアウトすべき
+" 基本的に自動的に設定される(本当?)ため、全てコメントアウトすべき
 " 変えたかったら$VIMRUNTIMEを~/.vimにコピってから
 " export VIMRUNTIME=~/.vim
 " を.zshrcなりですること
-" set tabstop=2     " タブ幅
-" set softtabstop=2
-" set autoindent    " 自動インデント
-" set smartindent   " 構文チェックしてインデント
-" set shiftwidth=2  " smartindentで増減する幅
+set tabstop=2     " タブ幅
+set softtabstop=2
+set autoindent    " 自動インデント
+set smartindent   " 構文チェックしてインデント
+set shiftwidth=2  " smartindentで増減する幅
 " set expandtab     " インデントを行う場合、スペースで埋める
 " Makefileのみタブを挿入
 " let _curfile = expand("%:r")
