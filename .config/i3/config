@@ -198,7 +198,7 @@ bar {
 # MY SETTINGS #
 ###############
 exec --no-startup-id fcitx # 日本語入力
-exec --no-startup-id termite # 自動でターミナルを起動
+exec --no-startup-id terminator # 自動でターミナルを起動
 exec --no-startup-id hsetroot -solid "#000000" # 壁紙を真っ黒に設定
 
 # アプレット
