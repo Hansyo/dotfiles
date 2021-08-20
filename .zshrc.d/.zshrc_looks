@@ -5,8 +5,8 @@ colors
 # プロンプトの設定
 ## 実際の見た目
 PROMPT='
-path %d
-%F{blue}${VIRTUAL_ENV##*/}%f%#%F{cyan}%m%f%(?.%F{white}$%f.%F{yellow}[%?]%f%F{red}$%f) '
+%F{blue}${VIRTUAL_ENV##*/}%f%(1l. .)%d
+%#%F{cyan}%m%f%(?.%F{white}$%f.%F{yellow}[%?]%f%F{red}$%f) '
 RPROMPT='$(git_super_status) '
 # virtualenvでpromptを変更しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
