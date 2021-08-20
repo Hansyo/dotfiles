@@ -1,5 +1,6 @@
 " conceal(勝手にtexの記法をマルチバイト文字にするやつ)を無効化
 let g:tex_conceal=''
+let g:vimtex_syntax_conceal_default = 0
 
 " 折りたたみの最小単位を変更?
 let g:vimtex_fold_envs = 0
