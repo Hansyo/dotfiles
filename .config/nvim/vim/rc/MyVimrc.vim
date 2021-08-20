@@ -85,3 +85,6 @@ set runtimepath+=/home/hansy/.vim
 set spelllang=en,cjk
 
 colorscheme elflord
+
+" concealを無効化
+set conceallevel=0
