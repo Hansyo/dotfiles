@@ -6,7 +6,10 @@
   title_transmit_bg_color = "#000000"
   title_inactive_fg_color = "#deddda"
   title_inactive_bg_color = "#c80003"
+  title_use_system_font = False
+  title_font = Fira Code Light 9
 [keybindings]
+  help = None
 [profiles]
   [[default]]
     background_darkness = 0.7
