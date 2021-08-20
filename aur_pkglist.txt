@@ -1,0 +1,15 @@
+canon-maxify-mb5100-complete
+direnv
+git-secrets
+google-chrome
+i3lock-fancy-rapid-git
+man-pages-ja
+powerpill
+pulseaudio-ctl
+sflock-git
+timeshift
+trousers
+ttf-ms-fonts
+xctu
+yay
+zoom
