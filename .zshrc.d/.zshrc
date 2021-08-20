@@ -58,11 +58,11 @@ source ~/.zshrc.d/.zshrc_zplugin
 _echo 'end .zshrc_zplugin' false
 
 zplugin ice wait'!0'
-zplugin snippet "${HOME}/.zshrc.d/.zshrc_usability"
+zplugin snippet "${ZDOTDIR}/.zshrc_usability"
 zplugin ice wait'!0'
-zplugin snippet "${HOME}/.zshrc.d/.zshrc_zkbd"
+zplugin snippet "${ZDOTDIR}/.zshrc_zkbd"
 zplugin ice wait'!0'
-zplugin snippet "${HOME}/.zshrc.d/.zshrc_hash"
+zplugin snippet "${ZDOTDIR}/.zshrc_hash"
 
 if $(uname -r | grep Microsoft > /dev/null); then
   umask 022
