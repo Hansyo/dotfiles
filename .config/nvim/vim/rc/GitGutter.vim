@@ -1,6 +1,6 @@
 let g:gitgutter_enabled = 1
-let g:gitgutter_highlight_lines = 1
-let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_highlight_linenrs = 0
 
 augroup MyGitGutterHighlight
 				autocmd!
