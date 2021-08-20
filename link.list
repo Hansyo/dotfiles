@@ -1,0 +1,2 @@
+# Source:Destination
+${DOTFILES}/.zsrc.d/.zshrc:${HOME}/.zshrc
