@@ -12,6 +12,7 @@ export LESS='-R' #lessコマンドを常時カラー表示できるようにす�
 #export LANG=ja_JP.UTF-8
 export LANGUAGE=ja
 export TERM=xterm-256color
+export DOTFILES=${HOME}/dotfiles # dotfilesを設定しておく
 
 _echo '  start alias'
 # alias関連
@@ -167,4 +168,27 @@ function copy-default-autoenv () {
       echo "$1's default autoenv does not exist."
     fi
   fi
+}
+
+# dotfilesにディレクトリを登録する
+# いちいち、dotfilesにcpしてlnするのは面倒なので...
+function regist-dot () {
+	TARGET=$1
+	CURRENT=$(pwd)
+	H_C=${CURRENT#${HOME}/} # $HOMEからのファイルパス
+
+	# lnのオプションを指定
+	if test -f ${CURRENT}/${TARGET}; then
+		LN_OPT="-sf"
+	elif test -d ${CURRENT}/${TARGET}; then
+		LN_OPT="-sd"
+	else
+		echo "does not good"
+		return -1
+	fi
+
+	# DOTFILESからファイルを移動しリンク
+	mkdir -p ${DOTFILES}/${H_C} # 必要ならディレクトリを生成(あったら無視される)
+	mv ${TARGET} ${DOTFILES}/${H_C} # ファイルの移動 ↓リンク
+	ln ${LN_OPT} ${DOTFILES}/${H_C}/${TARGET} ${HOME}/${H_C}/${TARGET}
 }
