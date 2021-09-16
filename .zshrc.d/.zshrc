@@ -65,3 +65,48 @@ if $(uname -r | grep Microsoft > /dev/null); then
   export GPG_TTY=$(tty)
   export PATH=$HOME/.poetry/bin:$PATH
 fi
+
+
+# tmuxの自動起動
+if [[ ! -v IS_QUESTION_ALREADY_DONE && ! -z `which tmux` ]]; then
+	IS_QUESTION_ALREADY_DONE="true"
+	if [[ ! -n $TMUX ]]; then
+		# get the IDs
+		S_SELECTOR="`tmux list-sessions`"
+		if [[ -z "$S_SELECTOR" ]]; then # sessionがない場合、defaultを作る
+			tmux new-session -ds default
+			S_SELECTOR="`tmux list-sessions`" # defaultを含めるため、面倒だがもう一度取得
+		fi
+
+		create_new_session="Create New Session"
+		only_zsh="Only zsh(Avoid tmux)"
+		connect_server="Connect to server(ssh)"
+		PERCOL=fzf
+
+		S_SELECTOR="$S_SELECTOR\n${create_new_session}:\n${connect_server}:\n${only_zsh}:"
+		S_SELECTOR="`echo $S_SELECTOR | $PERCOL | cut -d: -f1`"
+
+		if [[ "$S_SELECTOR" = "${create_new_session}" ]]; then
+			echo -n "Session name?\n> "
+			read S_SELECTOR
+			if [[ -z "$S_SELECTOR" ]]; then tmux new-session && exit
+			else tmux new-session -s $S_SELECTOR && exit; fi
+		elif [[ "$S_SELECTOR" = "${only_zsh}" ]]; then :  # Start terminal normally
+		elif [[ "$S_SELECTOR" = "${connect_server}" ]]; then
+			# tmuxがSSH先のサーバーにいる場合、こちらを使ったほうが良い
+			# 理由として、自端末側のtmuxのバインドが優先されてしまうためなどがある。
+			echo "Select server"
+			if [[ -v SSH_LIST_TMUX ]]; then S_SELECTOR="${SSH_LIST_TMUX}\n";
+			else S_SELECTOR=""; fi
+			S_SELECTOR="${S_SELECTOR}: Anything else."
+			S_SELECTOR="`echo $S_SELECTOR | $PERCOL | cut -d: -f1`"
+
+			if [[ -z "$S_SELECTOR" ]]; then # sshのオプションとサーバーを自分で指定する場合
+				echo -n "type (option and) server name\n> "
+				read S_SELECTOR
+			fi
+			ssh $S_SELECTOR && exit
+		elif [[ -n "$S_SELECTOR" ]]; then tmux attach-session -t "$S_SELECTOR" && exit;
+		else :; fi  # Start terminal normally
+	fi
+fi
