@@ -1,0 +1,35 @@
+# zinitがなければ、zinitをインストール
+if test ! -d ${HOME}/.zinit
+then
+  _echo '  start install zinit' $zinit_echo_show
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+fi
+
+# pluginの追加
+# 基本的にすべて遅延読込する
+# 遅延してはいけないpluginはそんなにないはず
+
+## 構文ハイライト
+#zinit ice wait'!0'
+zinit light zsh-users/zsh-syntax-highlighting
+
+## 前使ったコマンドを薄く表示してくれる
+## lazyloadしなくても、何かしらのコマンドを打たないと出てこない...
+zinit ice wait'!0'
+zinit light zsh-users/zsh-autosuggestions
+
+## タイプ補完?よくわからんが入れてみる
+zinit ice wait'!0'
+zinit light zsh-users/zsh-completions
+
+## gitの便利なやつ？いらないかも
+zinit ice wait'!0'
+zinit snippet OMZ::lib/git.zsh
+zinit ice wait'!0'
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice wait'!0'
+zinit light Hansyo/zsh-git-prompt
+
+
+# compinit
+autoload -Uz compinit; compinit

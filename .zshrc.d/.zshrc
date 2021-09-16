@@ -36,30 +36,28 @@ if test $(uname -n) = "archlinux";then
   _echo 'end .zshrc_arch'
 fi
 
-### Added by Zplugin's installer
-if [[ ! -d $HOME/.zplugin/bin ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing Zplugin…%f"
-    command mkdir -p $HOME/.zplugin
-    command git clone https://github.com/zdharma/zplugin $HOME/.zplugin/bin && \
+### Added by zinit's installer
+if [[ ! -d $HOME/.zinit/bin ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing zinit…%f"
+    command mkdir -p $HOME/.zinit
+    command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%F" || \
         print -P "%F{160}▓▒░ The clone has failed.%F"
 fi
-source "$HOME/.zplugin/bin/zplugin.zsh"
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of zinit installer's chunk
 
-# zplug -> zplugin へ移行
-_echo 'start .zshrc_zplugin' false
-source ~/.zshrc.d/.zshrc_zplugin
-_echo 'end .zshrc_zplugin' false
+# zplug -> zinit へ移行
+_echo 'start .zshrc_zinit' false
+source ~/.zshrc.d/.zshrc_zinit
+_echo 'end .zshrc_zinit' false
 
-zplugin ice wait'!0'
-zplugin snippet "${ZDOTDIR}/.zshrc_usability"
-zplugin ice wait'!0'
-zplugin snippet "${ZDOTDIR}/.zshrc_zkbd"
-zplugin ice wait'!0'
-zplugin snippet "${ZDOTDIR}/.zshrc_hash"
+zinit ice wait'!0'
+zinit snippet "${ZDOTDIR}/.zshrc_usability"
+zinit ice wait'!0'
+zinit snippet "${ZDOTDIR}/.zshrc_zkbd"
 
 if $(uname -r | grep Microsoft > /dev/null); then
   umask 022
