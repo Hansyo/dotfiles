@@ -175,7 +175,11 @@ function copy-default-autoenv () {
 function regist-dot () {
 	TARGET=$1
 	CURRENT=$(pwd)
-	H_C=${CURRENT#${HOME}/} # $HOMEからのファイルパス
+	if [[ ! $CURRENT = $HOME ]]; then
+		H_C="${CURRENT#${HOME}/}/" # $HOMEからのファイルパス
+	else
+		H_C=""
+	fi
 
 	# lnのオプションを指定
 	if test -f ${CURRENT}/${TARGET}; then
@@ -184,11 +188,11 @@ function regist-dot () {
 		LN_OPT="-sd"
 	else
 		echo "does not good"
-		return -1
+		return 1
 	fi
 
 	# DOTFILESからファイルを移動しリンク
 	mkdir -p ${DOTFILES}/${H_C} # 必要ならディレクトリを生成(あったら無視される)
 	mv ${TARGET} ${DOTFILES}/${H_C} # ファイルの移動 ↓リンク
-	ln ${LN_OPT} ${DOTFILES}/${H_C}/${TARGET} ${HOME}/${H_C}/${TARGET}
+	ln ${LN_OPT} ${DOTFILES}/${H_C}${TARGET} ${HOME}/${H_C}${TARGET}
 }
