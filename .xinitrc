@@ -48,7 +48,7 @@ fi
 #  unset f
 # fi
 
-twm &
+exec twmnd
 # xclock -geometry 50x50-1+1 &
 # xterm -geometry 80x50+494+51 &
 # xterm -geometry 80x20+494-0 &
@@ -66,6 +66,6 @@ elif type -a picom > /dev/null2>&1; then
 fi
 xbindkeys
 exec i3
-exec nm-applet
+#exec nm-applet
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
