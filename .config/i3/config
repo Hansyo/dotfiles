@@ -12,7 +12,7 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 10
-font pango:Fira Code Retina 9
+font pango:Fira Code Retina 15px
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -134,8 +134,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # default workspace on screen
-workspace 1 output DP-1
-workspace 2 output VGA-1
+workspace 1 output eDP
 
 
 # reload the configuration file
@@ -146,7 +145,7 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3?' -B 'only exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+p exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you want to exit i3?' -b 'Shutdown' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot' -b 'exit to i3' 'i3-msg exit'"
 # Set shut down, restart and locking features
-set $Locker i3lock-fancy-rapid 10 10 && slep 1
+set $Locker i3lock-fancy-rapid 10 10 && sleep 1
 mode "$mode_system" {
   bindsym l exec --no-startup-id $Locker, mode "default"
   bindsym e exec --no-startup-id i3-msg exit, mode "default"
@@ -189,9 +188,48 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#	position top
+#        status_command i3status
+#}
+# 色
+set $background #2b303b
+set $foreground #c0c5ce
+set $secondary #3f4751
+set $black #2b303b
+set $red #bf616a
+set $green #a3be8c
+set $yellow #ebcb8b
+set $blue #8fa1b3
+set $magenta #b48ead
+set $cyan #96b5b4
+set $white #c0c5ce
+
 bar {
-	position top
-        status_command i3status
+    status_command i3blocks
+    font pango:Hack Regular 10
+    mode dock
+    position top
+    separator_symbol "│"
+    workspace_buttons yes
+    strip_workspace_numbers yes
+    binding_mode_indicator yes
+    tray_output primary
+    tray_padding 2
+    colors {
+        background $background
+        focused_background $background
+        statusline $blue
+        focused_statusline $green
+        separator $secondary
+        focused_separator $secondary
+        # 左からborder, bg, fg
+        focused_workspace  $blue $blue $background
+        active_workspace $background $background $foreground
+        inactive_workspace $background $background $foreground
+        urgent_workspace   $red $red $background
+        binding_mode       $blue $blue $background
+    }
 }
 
 
@@ -200,14 +238,11 @@ bar {
 # MY SETTINGS #
 ###############
 exec --no-startup-id fcitx # 日本語入力
-exec --no-startup-id terminator # 自動でターミナルを起動
+#exec --no-startup-id terminator # 自動でターミナルを起動
 exec --no-startup-id hsetroot -solid "#000000" # 壁紙を真っ黒に設定
 
 # アプレット
 exec --no-startup-id copyq # クリップボード管理
-exec --no-startup-id volumeicon # ボリューム管理
-exec --no-startup-id nm-applet --sm-disable #  ネットワークのアプレット
-exec --no-startup-id cbatticon # バッテリーアイコン(不要かも)
 exec --no-startup-id blueman-applet # ブルートゥースのアプレット
 
 # use i3-dmenu-desktop
@@ -216,16 +251,21 @@ bindsym $mod+y exec i3lock-fancy-rapid 10 10
 #bindsym $mod+z exec dmenu_run
 
 # change blightness level
+set $BR_SC /home/hansy/system-service/brightness/change_brightness.sh
 #bindsym $mod+F5 exec /home/hansy/system-service/brightness/change_brightness.sh -10
 #bindsym $mod+F6 exec /home/hansy/system-service/brightness/change_brightness.sh 10
-bindsym XF86MonBrightnessDown exec /home/hansy/system-service/brightness/change_brightness.sh -10
-bindsym XF86MonBrightnessUp exec /home/hansy/system-service/brightness/change_brightness.sh 10
+bindsym XF86MonBrightnessDown exec $BR_SC -10 && pkill -SIGRTMIN+2 i3blocks
+bindsym XF86MonBrightnessUp exec $BR_SC 10 && pkill -SIGRTMIN+2 i3blocks
 
 # change Audio Bolume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+set $SPK alsa_output.pci-0000_06_00.6.HiFi__hw_Generic_1__sink
+##increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $SPK +5% && pkill -SIGRTMIN+1 i3blocks
+##decrease sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $SPK -5% && pkill -SIGRTMIN+1 i3blocks
+## mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $SPK toggle && pkill -SIGRTMIN+1 i3blocks
 
 # Print Screen
-bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot/`date "+%y%m%d%H%M"`.jpg
-bindsym XF86Favorites exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/`date "+%y%m%d%H%M"`.jpg
+bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot/ss`date "+%y%m%d%H%M"`.jpg
+bindsym XF86Favorites exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/ws`date "+%y%m%d%H%M"`.jpg
