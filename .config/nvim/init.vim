@@ -43,6 +43,9 @@ Plug 'thinca/vim-quickrun'
 
 " ColorScheme
 
+" Vim Tmux Navigator
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 
 " vimrcを現状の方法で分割することに限界を感じた。
