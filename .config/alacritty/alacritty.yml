@@ -22,6 +22,7 @@ env:
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
+  WINIT_X11_SCALE_FACTOR: "1.75"
 
 window:
   # Window dimensions (changes require restart)
@@ -152,7 +153,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 9.0
+  size: 8.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -752,7 +753,7 @@ background_opacity: 0.7
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
@@ -834,8 +835,9 @@ background_opacity: 0.7
   #- { key: Key0,           mods: Control,                         action: ResetFontSize    }
   #- { key: Equals,         mods: Control,                         action: IncreaseFontSize }
   #- { key: Plus,           mods: Control,                         action: IncreaseFontSize }
+  - { key: Insert,         mods: Control,                         action: IncreaseFontSize }
   #- { key: NumpadAdd,      mods: Control,                         action: IncreaseFontSize }
-  #- { key: Minus,          mods: Control,                         action: DecreaseFontSize }
+  - { key: Minus,          mods: Control,                         action: DecreaseFontSize }
   #- { key: NumpadSubtract, mods: Control,                         action: DecreaseFontSize }
 
   # (Windows only)
