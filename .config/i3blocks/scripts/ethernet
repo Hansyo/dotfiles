@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+set -euCo pipefail
+
+function online() {
+	[[ $(which nmcli) ]] && \
+	[[ $(nmcli -g STATE,TYPE device status|grep '^connected:ethernet') ]] && \
+	return 0
+	return 1
+}
+
+function get_device() {
+	echo $(LANG=C nmcli -g DEVICE connection show | grep 'enp')
+}
+
+function get_IP() {
+	local DEVICE=$(get_device)
+	echo $(nmcli -g IP4 device show $DEVICE | cut -d ':' -f2 | sed 's/\/[0-9]*//')
+}
+
+
+#echo "有線 $(nmcli -g IP4 device show $(LANG=C nmcli -g DEVICE connection show | grep 'enp') | cut -d ':' -f2 | sed 's/\/[0-9]*//')"
+
+if [[ online ]]; then
+	echo $(get_IP)
+fi

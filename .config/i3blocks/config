@@ -1,61 +1,54 @@
-# [update]
-# command=ip addr show dev wlp4s0 | grep UP && checkupdates | wc -l
-# color=#8fa1b3
-# interval=3600
+# default settings
+color=#8fa1b3
+command=$SCRIPT_DIR/$BLOCK_NAME
 
 [uptime]
 label=
 command=uptime | sed 's/.*up *\([^,]*\),.*/\1/'
-color=#8fa1b3
 interval=60
 
 [memory]
 label=
-command=~/.config/i3blocks/memory.py
-#command=free -h | awk 'match($0, /^Mem/){print $3 " / " $2}'
-color=#8fa1b3
-interval=1
+interval=10
 
 [load average]
 label=
 command=echo "$(uptime | sed 's/.*load average: \(.*\)/\1/' | cut -d, -f1)/$(echo "  $(vmstat|tail -n 1)"|sed 's/  */ /g'|cut -d' ' -f14,15|awk '{printf("%2d%%", $1+$2)}')"
-color=#8fa1b3
-interval=1
-
-[network_a]
-#label=
-#command=[[ -n $(ip link show up dev wlp4s0) ]] && which wpa_cli &> /dev/null && echo "$({ echo 'status'; echo 'quit'; } | wpa_cli -i wlp4s0 | grep '^ssid=' | cut -d= -f2) : $(cat /proc/net/wireless | tail -1 | tr -s ' ' | cut -d' ' -f4 | sed 's/\./dBm/')"
-command=nmcli -g STATE,TYPE device status | grep '^connected:wifi' &> /dev/null && echo "$(nmcli -g AP device show | grep '\*' | sed 's/\\:/./g' | sed '/^$/d' | cut -d ':' --output-delimiter=' ' -f4,7,9 | awk '{printf("%s %s(%d %s)",$4 ,$1 ,$2 ,$3)}')"
-color=#8fa1b3
 interval=10
 
-[network_b]
-label=
-command=echo "do it your self!"
-color=#8fa1b3
-#interval=10
+[wifi]
+interval=1
 
+[ethernet]
+label=
+interval=60
+
+[bandwidth2]
+# copy by i3blocks-contrib
+label=
+interval=persist
+warn_rx=307200
+warn_tx=30720
+crit_rx=512000
+crit_tx=51200
+markup=pango
 
 [blightness]
 label=☀
 command=xbacklight -get | xargs printf '%.0f%%\n'
-color=#8fa1b3
 interval=once
 signal=2
 
 [volume]
-label=Vol.
-command=~/.config/i3blocks/volume.sh
+label=♪
 interval=once
 signal=1
 
 [date]
-label=
-command=date +'%m/%d(%a) %H:%M'
+command=date +'%m/%d(%a) %H:%M:%S'
 color=#8fa1b3
 interval=1
 
 [battery]
-command=~/.config/i3blocks/battery.sh
 format=json
 interval=persist

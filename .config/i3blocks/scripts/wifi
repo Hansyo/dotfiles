@@ -1,0 +1,28 @@
+#!/bin/zsh
+set -euCo pipefail
+
+function online() {
+	[[ $(which nmcli) ]] && \
+	[[ $(nmcli -g STATE,TYPE device status |grep '^connected:wifi' &> /dev/null) ]]\
+	&& return 0
+	return 1
+}
+
+function get_device() {
+	echo $(LANG=C nmcli -g DEVICE connection show | grep 'wlp')
+}
+
+function get_IP() {
+	local DEVICE=$(get_device)
+	echo $(nmcli -g IP4 device show $DEVICE | cut -d ':' -f2 | sed 's/\/[0-9]*//')
+}
+
+function get_other_info() {
+	echo $(nmcli -g AP device show | grep '\*' | sed 's/\\:/./g' | sed '/^$/d' | cut -d ':' --output-delimiter=' ' -f4,7,9 | awk '{printf("%s %s",$4 ,$1)}')
+}
+
+if [[ online ]]; then
+	echo $(get_other_info) $(get_IP)
+else
+	echo "failed $(online)"
+fi
