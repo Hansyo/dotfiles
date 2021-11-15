@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Solaar
+Comment=Logitech Unifying Receiver peripherals manager
+TryExec=solaar
+Exec=solaar -w hide
+Icon=solaar
+StartupNotify=true
+Terminal=false
+Type=Application
+Keywords=logitech;unifying;receiver;mouse;keyboard;
+Categories=Utility;GTK;
+#Categories=Utility;GTK;Settings;HardwareSettings;
+X-GNOME-UsesNotifications=true

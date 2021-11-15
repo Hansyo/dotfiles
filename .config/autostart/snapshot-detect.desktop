@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Snapshot Detect
+Icon=timeshift
+TryExec=/usr/bin/snapshot-detect
+Exec=/usr/bin/snapshot-detect
+Terminal=false
+Type=Application
+OnlyShowIn=i3;
+

@@ -1,0 +1,12 @@
+Autostart file: /home/hansy/.config/autostart/blueman.desktop
+Executing command: blueman-applet
+Autostart file: /home/hansy/.config/autostart/fcitx-autostart.desktop
+Executing command: fcitx-autostart
+Autostart file: /home/hansy/.config/autostart/libinput-gestures.desktop
+Executing command: /usr/bin/libinput-gestures
+Autostart file: /home/hansy/.config/autostart/pulseaudio.desktop
+Executing command: start-pulseaudio-x11
+Autostart file: /home/hansy/.config/autostart/snapshot-detect.desktop
+Executing command: /usr/bin/snapshot-detect
+Autostart file: /home/hansy/.config/autostart/solaar.desktop
+Executing command: solaar
