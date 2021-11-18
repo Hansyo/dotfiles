@@ -40,7 +40,7 @@ fi
 if [[ ! -d $HOME/.zinit/bin ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing zinit…%f"
     command mkdir -p $HOME/.zinit
-    command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
+    command git clone https://github.com/zdharma-continuum/zinit.git $HOME/.zinit/bin && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%F" || \
         print -P "%F{160}▓▒░ The clone has failed.%F"
 fi
