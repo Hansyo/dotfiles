@@ -213,7 +213,7 @@ int main(int argc, char *argv[])
     tx = (sent - sent_old) / (float)(s - s_old);
     printf("%s", label);
     display(unit, divisor, rx, warningrx, criticalrx);
-    printf(" ");
+    //printf(" ");
     display(unit, divisor, tx, warningtx, criticaltx);
     printf("\n");
     fflush(stdout);

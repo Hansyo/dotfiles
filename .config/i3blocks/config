@@ -11,10 +11,9 @@ interval=60
 label=
 interval=10
 
-[load average]
+[load_average]
 label=
-command=echo "$(uptime | sed 's/.*load average: \(.*\)/\1/' | cut -d, -f1)/$(echo "  $(vmstat|tail -n 1)"|sed 's/  */ /g'|cut -d' ' -f14,15|awk '{printf("%2d%%", $1+$2)}')"
-interval=10
+interval=1
 
 [wifi]
 interval=1
@@ -46,7 +45,6 @@ signal=1
 
 [date]
 command=date +'%m/%d(%a) %H:%M:%S'
-color=#8fa1b3
 interval=1
 
 [battery]

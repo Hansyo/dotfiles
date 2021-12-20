@@ -1,0 +1,15 @@
+#!/usr/bin/env zsh
+
+function get_load_average() {
+  echo $(uptime | sed 's/.*load average: \(.*\)/\1/' | cut -d, -f1)
+}
+
+function get_cpu_usage() {
+  echo $(echo "  $(vmstat|tail -n 1)"|sed 's/  */ /g'|cut -d' ' -f14,15|awk '{printf("%2d%%", $1+$2)}')
+}
+
+function get_cpu_temp() {
+  echo "$(sensors k10temp-pci-00c3|grep Tctl|cut -d+ -f2)"
+}
+
+echo $(get_load_average)/$(get_cpu_usage):$(get_cpu_temp)
