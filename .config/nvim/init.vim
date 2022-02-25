@@ -46,6 +46,9 @@ Plug 'thinca/vim-quickrun'
 " Vim Tmux Navigator
 Plug 'christoomey/vim-tmux-navigator'
 
+" Vim surround
+Plug 'tpope/vim-surround'
+
 call plug#end()
 
 " vimrcを現状の方法で分割することに限界を感じた。
