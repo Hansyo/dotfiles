@@ -8,4 +8,4 @@ let g:clang_use_library = 1
 let g:clang_c_completeopt   = 'menuone'
 let g:clang_cpp_completeopt = 'menuone'
 
-let g:clang_cpp_options = '-std=c++17 -stdlib=libc++'
+" let g:clang_cpp_options = '-std=c++17 -stdlib=libc++'

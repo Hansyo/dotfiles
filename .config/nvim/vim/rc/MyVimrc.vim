@@ -91,3 +91,6 @@ colorscheme elflord
 
 " concealを無効化
 set conceallevel=0
+
+" LeaderをSpaceに設定
+let mapleader = "\<Space>"

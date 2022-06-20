@@ -41,6 +41,9 @@ Plug 'lervag/vimtex'
 " vim-quickrun
 Plug 'thinca/vim-quickrun'
 
+" comment out
+Plug 'tpope/vim-commentary'
+
 " ColorScheme
 
 " Vim Tmux Navigator
