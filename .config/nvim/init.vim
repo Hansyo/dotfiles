@@ -45,6 +45,12 @@ Plug 'thinca/vim-quickrun'
 Plug 'tpope/vim-commentary'
 
 " ColorScheme
+Plug '4513ECHO/vim-colors-hatsunemiku'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'rebelot/kanagawa.nvim'
 
 " Vim Tmux Navigator
 Plug 'christoomey/vim-tmux-navigator'
