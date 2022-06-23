@@ -1,3 +1,29 @@
+" Other settings
+"" 背景を透過させるための設定
+augroup TransparentBG
+	autocmd!
+	autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
+	autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
+	autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
+	autocmd Colorscheme * highlight CursorLineNr ctermbg=NONE guibg=NONE
+	autocmd Colorscheme * highlight Folded ctermbg=NONE guibg=NONE
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+augroup END
+
+"" 行番号の色を選択行は黄色、それ以外は薄い黄色に変える
+augroup HighlightLine
+	autocmd!
+	autocmd Colorscheme * highlight LineNr ctermfg=3 guifg=#909b1b
+	autocmd Colorscheme * highlight CursorLineNr ctermfg=Yellow guifg=#f8fa1c
+augroup END
+
+"" LSPのエラーに関連するバックとフォアの色を変える(黒々で見えない)
+augroup HighlightLsp
+	autocmd!
+	autocmd Colorscheme * highlight lspReference ctermfg=white guifg=#FFFFFF ctermbg=6 guibg=#008080
+augroup END
+
+" load_colorscheme
 " elflord
 "colorscheme elflord
 
@@ -35,22 +61,3 @@ colorscheme nightfly
 " kanagawa
 " set termguicolors
 " colorscheme kanagawa
-
-" Other settings
-"" 背景を透過させるための設定
-augroup TransparentBG
-	autocmd!
-	autocmd Colorscheme * highlight Normal ctermbg=NONE guibg=NONE
-	autocmd Colorscheme * highlight NonText ctermbg=NONE guibg=NONE
-	autocmd Colorscheme * highlight LineNr ctermbg=NONE guibg=NONE
-	autocmd Colorscheme * highlight CursorLineNr ctermbg=NONE guibg=NONE
-	autocmd Colorscheme * highlight Folded ctermbg=NONE guibg=NONE
-	autocmd Colorscheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
-augroup END
-
-"" 行番号の色を選択行は黄色、それ以外は薄い黄色に変える
-augroup HighlightLine
-	autocmd!
-	autocmd Colorscheme * highlight LineNr ctermfg=3 guifg=#909b1b
-	autocmd Colorscheme * highlight CursorLineNr ctermfg=Yellow guifg=#f8fa1c
-augroup END
