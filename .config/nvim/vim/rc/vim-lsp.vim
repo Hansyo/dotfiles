@@ -38,3 +38,5 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 nnoremap <Leader>h :LspDefinition<CR>
 nnoremap <Leader>f :LspCodeAction<CR>
 nnoremap <f5> :LspDocumentFormat<CR>
+nnoremap <Leader>n :LspNextDiagnostic<CR>
+nnoremap <Leader>N :LspPreviousDiagnostic<CR>
