@@ -244,6 +244,10 @@ exec --no-startup-id dex -va i3 # xdg-autostart
 #exec --no-startup-id fcitx # 日本語入力
 #exec --no-startup-id terminator # 自動でターミナルを起動
 exec --no-startup-id hsetroot -solid "#000000" # 壁紙を真っ黒に設定
+# polkit-gnomeのエージェントを自動起動
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# kensingtonのマウスをつないだ時専用のスクリプトを動作させる
+exec /home/hansy/.local/bin/kensington
 
 # アプレット
 #exec --no-startup-id copyq # クリップボード管理
