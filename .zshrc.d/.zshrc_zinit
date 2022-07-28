@@ -22,13 +22,9 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait'!0'
 zinit light zsh-users/zsh-completions
 
-## gitの便利なやつ？いらないかも
+## gitの便利なやつ
 zinit ice wait'!0'
-zinit snippet OMZ::lib/git.zsh
-zinit ice wait'!0'
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit ice wait'!0'
-zinit light Hansyo/zsh-git-prompt
+zinit light woefe/git-prompt.zsh
 
 
 # compinit

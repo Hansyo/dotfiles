@@ -8,7 +8,7 @@ PROMPT='
 %D %*
 %F{blue}${VIRTUAL_ENV##*/}%f%(1l. .)%d
 %#%F{cyan}%m%f%(?.%F{white}$%f.%F{yellow}[%?]%f%F{red}$%f) '
-RPROMPT='$(git_super_status) '
+RPROMPT='$(gitprompt) '
 ## コマンド実行時に、再描画
 re-prompt() {
   zle .accept-line
