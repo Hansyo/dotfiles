@@ -271,6 +271,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $SPK toggle && pk
 # Print Screen
 bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot/ss`date "+%y%m%d%H%M"`.jpg
 bindsym XF86Favorites exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/ws`date "+%y%m%d%H%M"`.jpg
+bindsym Shift+Print exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/ws`date "+%y%m%d%H%M"`.jpg
 
 # move mode
 mode "move" {
