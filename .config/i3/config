@@ -184,6 +184,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+        bindsym $mod+m mode "move" focus floating
 }
 
 bindsym $mod+r mode "resize"
@@ -270,3 +271,30 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $SPK toggle && pk
 # Print Screen
 bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot/ss`date "+%y%m%d%H%M"`.jpg
 bindsym XF86Favorites exec --no-startup-id import -window "$(xdotool getwindowfocus -f)" ~/Pictures/screenshot/ws`date "+%y%m%d%H%M"`.jpg
+
+# move mode
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    bindsym Shift+h resize shrink width 10 px or 10 ppt
+    bindsym Shift+j resize grow height 10 px or 10 ppt
+    bindsym Shift+k resize shrink height 10 px or 10 ppt
+    bindsym Shift+l resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+    bindsym $mod+r mode "resize"
+}
+bindsym $mod+m mode "move" focus floating
