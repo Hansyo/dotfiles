@@ -79,8 +79,8 @@ if [[ ! -v IS_QUESTION_ALREADY_DONE && ! -z `which tmux` ]]; then
 		fi
 
 		create_new_session="Create New Session"
-		only_zsh="Only zsh(Avoid tmux)"
-		connect_server="Connect to server(ssh)"
+		only_zsh="Avoid tmux"
+		connect_server="ssh"
 		PERCOL=fzf
 
 		S_SELECTOR="$S_SELECTOR\n${create_new_session}:\n${connect_server}:\n${only_zsh}:"
