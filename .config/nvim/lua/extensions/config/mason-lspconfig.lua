@@ -1,3 +1,4 @@
+return function()
 require('mason-lspconfig').setup_handlers({
 	function(server)
 		local opt = {
@@ -12,14 +13,6 @@ require('mason-lspconfig').setup_handlers({
 			),
 		}
 		require('lspconfig')[server].setup(opt)
-		-- require("lspconfig").pyright.setup {
-		-- 	settings = {
-		-- 		python = {
-		-- 			venvPath = ".",
-		-- 			pythonPath = "./.venv/bin/python",
-		-- 			analysis = { extraPaths = { "." } }
-		-- 		}
-		-- 	}
-		-- }
 	end })
+end
 
