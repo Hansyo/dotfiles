@@ -1,1 +1,4 @@
-return function() vim.keymap.set({ "n", "i", "v" }, "<F4>", "<cmd>Twilight<CR>") end
+return function()
+	vim.keymap.set({ "n", "i", "v" }, "<Plug>(ToggleHotkey)T", "<Plug>(TwilightToggle)")
+	vim.keymap.set({ "n", "i", "v" }, "<Plug>(TwilightToggle)", "<cmd>Twilight<CR>")
+end

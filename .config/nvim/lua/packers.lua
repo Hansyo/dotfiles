@@ -34,10 +34,11 @@ local function init()
 	packer.use({
 		"williamboman/mason.nvim",
 		event = ev_BufLazy,
+		module = { "mason-core" },
 		requires = {
 			{ "neovim/nvim-lspconfig",             opt = true, module = "lspconfig" },
-			{ "mason-org/mason-registry",          opt = true, event = ev_BufLazy, },
-			{ "williamboman/mason-lspconfig.nvim", opt = true, module = "mason-lspconfig", },
+			{ "mason-org/mason-registry",          opt = true, event = ev_BufLazy },
+			{ "williamboman/mason-lspconfig.nvim", opt = true, module = "mason-lspconfig" },
 		},
 		config = require("extensions.config.mason"),
 	})
@@ -74,8 +75,8 @@ local function init()
 	packer.use({
 		"jose-elias-alvarez/null-ls.nvim",
 		event = ev_BufLazy,
-		requires = { "nvim-lua/plenary.nvim", },
-		after = { "mason-null-ls.nvim", "mason.nvim", },
+		requires = { "nvim-lua/plenary.nvim" },
+		after = { "mason-null-ls.nvim", "mason.nvim" },
 		config = require("extensions.config.null-ls"),
 	})
 
@@ -102,11 +103,14 @@ local function init()
 	packer.use({
 		"folke/twilight.nvim",
 		cmd = { "Twilight" },
-		keys = { "<F4>" },
-		requires = { "nvim-treesitter/nvim-treesitter", opt = true },
+		keys = { "<Plug>(TwilightToggle)" },
+		requires = {
+			"nvim-treesitter/nvim-treesitter",
+			cmd = { "Twilight" },
+			keys = { "<Plug>(TwilightToggle)" },
+		},
 		setup = require("extensions.setup.twilight"),
 		config = require("extensions.config.twilight"),
-		wants = { "nvim-treesitter/nvim-treesitter" },
 	})
 
 	-- Easy Search
@@ -127,8 +131,10 @@ local function init()
 	packer.use({
 		"nvim-telescope/telescope.nvim",
 		module = { "telescope" },
+		cmd = { "Telescope" },
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
+			{ "rcarriga/nvim-notify", opt = true },
 		},
 		setup = require("extensions.setup.telescope"),
 		config = require("extensions.config.telescope"),
@@ -137,19 +143,23 @@ local function init()
 	-- 補完
 	local ev_Ins = function(requires)
 		for i = 1, #requires do
-			requires[i].event = { "InsertEnter" }
+			if requires[i].event == nil then
+				requires[i].event = { "InsertEnter" }
+			else
+				table.insert(requires[i].event, "InsertEnter")
+			end
 		end
 		return requires
 	end
 	local cmp_requires = {
-		{ "hrsh7th/cmp-nvim-lsp",                module = { "cmp_nvim_lsp" } },
-		{ "hrsh7th/cmp-buffer", },
-		{ "hrsh7th/cmp-path", },
-		{ "hrsh7th/cmp-vsnip", },
-		{ "hrsh7th/vim-vsnip", },
-		{ "onsails/lspkind.nvim",                module = { "lspkind" } },
-		{ "hrsh7th/cmp-nvim-lsp-signature-help", },
-		{ "hrsh7th/cmp-cmdline", },
+		{ "hrsh7th/cmp-nvim-lsp",               module = { "cmp_nvim_lsp" } },
+		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-path" },
+		{ "hrsh7th/cmp-vsnip" },
+		{ "hrsh7th/vim-vsnip" },
+		{ "onsails/lspkind.nvim",               module = { "lspkind" } },
+		{ "hrsh7th/cmp-nvim-lsp-signature-help" },
+		{ "hrsh7th/cmp-cmdline",                event = { "CmdlineEnter" } },
 	}
 	packer.use({
 		"hrsh7th/nvim-cmp",
@@ -169,6 +179,12 @@ local function init()
 		setup = require("extensions.setup.vim-matchup"),
 	})
 
+	-- Toggle numbers
+	packer.use({
+		"myusuf3/numbers.vim",
+		event = { "InsertEnter" },
+	})
+
 	-- Alt coutup/down
 	packer.use({
 		"monaqa/dial.nvim",
@@ -186,8 +202,34 @@ local function init()
 		config = require("extensions.config.lualine"),
 	})
 
-	-- Todo Comments
-	-- Lua
+	-- Noice!!
+	local ev_noice = { "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" }
+	packer.use({
+		"rcarriga/nvim-notify",
+		event = ev_noice,
+		module = { "notify" },
+		cmd = { "Notifications" },
+		config = require("extensions.config.nvim-notify"),
+	})
+	packer.use({
+		"folke/noice.nvim",
+		event = ev_noice,
+		module = { "noice" },
+		requires = {
+			{ "MunifTanjim/nui.nvim", event = ev_noice },
+			{ "rcarriga/nvim-notify", opt = true },
+		},
+		config = require("extensions.config.noice"),
+	})
+
+	-- Highlights
+	--- Colorscheme
+	packer.use({
+		"bluz71/vim-nightfly-colors",
+		as = "nightfly",
+	})
+
+	--- Todo Comments
 	packer.use({
 		"folke/todo-comments.nvim",
 		event = ev_BufLazy,
@@ -196,19 +238,7 @@ local function init()
 		config = require("extensions.setup.todo-comments"),
 	})
 
-	-- ColorScheme
-	packer.use({
-		"bluz71/vim-nightfly-colors",
-		as = "nightfly",
-	})
-
-	-- Git
-	packer.use(ll_cursor({
-		"lewis6991/gitsigns.nvim",
-		config = require("extensions.config.gitsigns"),
-	}))
-
-	-- Colorcode
+	--- Colorcode
 	packer.use({
 		"norcalli/nvim-colorizer.lua",
 		cmd = {
@@ -219,12 +249,38 @@ local function init()
 		},
 	})
 
+	-- QuickFIX
+	--- quick-scope
+	packer.use(ll_cursor({
+		"unblevable/quick-scope",
+		setup = require("extensions.setup.quick-scope"),
+	}))
+
+	--- nvim-bqf
+	packer.use({
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		requires = {
+			{ "nvim-treesitter/nvim-treesitter", opt = true },
+		},
+	})
+
+	-- Git
+	packer.use(ll_cursor({
+		"lewis6991/gitsigns.nvim",
+		config = require("extensions.config.gitsigns"),
+	}))
+
 	-- Languages
 	--- Markdown
 	packer.use({
 		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
-		setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
 		ft = { "markdown" },
 	})
 
