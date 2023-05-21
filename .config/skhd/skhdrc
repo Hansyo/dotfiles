@@ -19,8 +19,8 @@ alt - s : yabai -m window --stack recent || (yabai -m window --toggle float && y
 
 ## 上下のスタックウィンドウに変更
 ### isStacking -> [ $(yabai -m query --windows --window | jq '."stack-index"') -ne 0 ]
-cmd - k : [ $(yabai -m query --windows --window | jq '."stack-index"') -ne 0 ] && yabai -m window --focus stack.prev || yabai -m window --focus north
-cmd - j : [ $(yabai -m query --windows --window | jq '."stack-index"') -ne 0 ] && yabai -m window --focus stack.next || yabai -m window --focus south
+cmd - k : [ $(yabai -m query --windows --window | jq '."stack-index"') -ne 0 ] && yabai -m window --focus stack.prev || yabai -m window --focus north || yabai -m display --focus north
+cmd - j : [ $(yabai -m query --windows --window | jq '."stack-index"') -ne 0 ] && yabai -m window --focus stack.next || yabai -m window --focus south || yabai -m display --focus south
 
 ## float window
 shift + cmd - space : yabai -m window --toggle float
