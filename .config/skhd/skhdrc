@@ -28,12 +28,12 @@ shift + cmd - space : yabai -m window --toggle float
 # Space
 ## focus space
 ### check next or prev display is same display -> [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ]
-ctrl - left    : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
-ctrl - right   : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
-cmd + ctrl - left    : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
-cmd + ctrl - right   : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
-cmd + ctrl - h : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
-cmd + ctrl - l : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
+ctrl - left        : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
+ctrl - right       : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
+cmd + ctrl - left  : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
+cmd + ctrl - right : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
+cmd + ctrl - h     : [ $(yabai -m query --spaces --space prev | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus prev
+cmd + ctrl - l     : [ $(yabai -m query --spaces --space next | jq '.display') -eq $(yabai -m query --spaces --space | jq '.display') ] && yabai -m space --focus next
 
 ## move space between another display
 cmd + ctrl + shift - left  : yabai -m space --display west
