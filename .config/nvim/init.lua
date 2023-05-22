@@ -1,16 +1,24 @@
 -- luaで書いた設定の高速化
 vim.loader.enable()
 
-vim.api.nvim_create_user_command('PackerInstall', [[packadd packer.nvim | lua require('packers').install()]], { bang = true })
-vim.api.nvim_create_user_command('PackerUpdate',  [[packadd packer.nvim | lua require('packers').update()]],  { bang = true })
-vim.api.nvim_create_user_command('PackerSync',    [[packadd packer.nvim | lua require('packers').sync()]],    { bang = true })
-vim.api.nvim_create_user_command('PackerStatus',  [[packadd packer.nvim | lua require('packers').status()]],  { bang = true })
-vim.api.nvim_create_user_command('PackerClean',   [[packadd packer.nvim | lua require('packers').clean()]],   { bang = true })
-vim.api.nvim_create_user_command('PackerCompile', [[packadd packer.nvim | lua require('packers').compile()]], { bang = true })
+-- Lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
 
--- require 'plugins'
-require 'colorscheme'
-require 'options'
-require 'keybindings'
-require 'lsp'
+require("options")
+require("keybindings")
+require("lsp")
+require("lazy").setup("packages")
 
+-- パッケージからカラースキームを読み込むため、lazyの後に持ってくる
+require("colorscheme")
