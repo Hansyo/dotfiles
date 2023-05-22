@@ -17,6 +17,10 @@ set("n", "<Plug>(ToggleHotkey)o", function() vim.o.scrolloff = (vim.o.scrolloff 
 set("i", "jj", "<ESC>", silent)
 set("n", "+", "%")
 
+-- Swap repeat key <-> mark key
+set("n", "m", ".", noremap)
+set("n", ".", "m", noremap)
+
 -- Toggle QuickFIX
 set("n", "<Plug>(ToggleHotkey)s",
 	function()
