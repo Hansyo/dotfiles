@@ -25,7 +25,6 @@ local function init()
 		"christoomey/vim-tmux-navigator",
 		"nvim-lua/plenary.nvim", -- いろんな奴らの依存プラグイン
 		ll_cursor({ "Yggdroot/indentLine" }),
-		ll_cursor({ "bronson/vim-trailing-whitespace" }),
 		ll_cursor({ "vim-jp/vimdoc-ja" }),
 		ll_BR_BNF({ "tpope/vim-repeat" }), -- Expand dot repeat
 	})
@@ -221,8 +220,18 @@ local function init()
 		},
 		config = require("extensions.config.noice"),
 	})
+	--- more good neovim ui
+	packer.use({
+		"stevearc/dressing.nvim",
+		event = ev_noice,
+	})
 
 	-- Highlights
+	--- Trailing Whitespace
+	packer.use(ll_cursor({
+		"bronson/vim-trailing-whitespace",
+		config = require("extensions.config.vim-trailing-whitespace"),
+	}))
 	--- Colorscheme
 	packer.use({
 		"bluz71/vim-nightfly-colors",
@@ -282,6 +291,14 @@ local function init()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
+	})
+
+	-- im-select
+	packer.use({
+		"keaising/im-select.nvim",
+		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter", "CursorHold" },
+		cond = vim.fn.executable("im-select") == 1,
+		config = require("extensions.config.im-select"),
 	})
 
 	-- Packer
