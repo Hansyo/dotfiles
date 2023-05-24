@@ -13,5 +13,8 @@ return function()
 				exec = "<CR>",
 			},
 		},
+		rename = {
+			in_select = false,
+		},
 	})
 end
