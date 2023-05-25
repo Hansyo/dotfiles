@@ -192,6 +192,7 @@ return {
 		"rcarriga/nvim-notify",
 		event = ev_noice,
 		cmd = { "Notifications" },
+		keys = require("extensions.keys.nvim-notify"),
 		config = require("extensions.config.nvim-notify"),
 	}),
 	vl({
