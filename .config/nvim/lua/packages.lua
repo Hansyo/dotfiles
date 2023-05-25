@@ -22,21 +22,15 @@ local function vl(pkg)
 	return pkg
 end
 
-local ev_BufLazy = { "BufRead", "BufNewFile", "VimEnter" }
-local ev_noice = { "BufRead", "BufNewFile", "InsertEnter", "CmdlineEnter" }
-
-
 return {
 	vl({ "christoomey/vim-tmux-navigator" }),
 	vl({ "nvim-lua/plenary.nvim" }), -- いろんな奴らの依存プラグイン
-	vl({ "Yggdroot/indentLine" }),
 	vl({ "vim-jp/vimdoc-ja" }),
 	vl({ "tpope/vim-repeat" }), -- Expand dot repeat
 
 	-- LSP
 	vl({
 		"williamboman/mason.nvim",
-		event = ev_BufLazy,
 		dependencies = {
 			"mason-org/mason-registry",
 			"neovim/nvim-lspconfig",
@@ -74,7 +68,6 @@ return {
 	},
 	vl({
 		"jose-elias-alvarez/null-ls.nvim",
-		event = ev_BufLazy,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"jay-babu/mason-null-ls.nvim",
@@ -115,7 +108,6 @@ return {
 	-- Easy Search
 	{
 		"hrsh7th/vim-searchx",
-		fn = "searchx#*",
 		keys = require("extensions.keys.vim-searchx"),
 		config = require("extensions.config.vim-searchx"),
 	},
@@ -190,14 +182,12 @@ return {
 	-- Noice!!
 	vl({
 		"rcarriga/nvim-notify",
-		event = ev_noice,
 		cmd = { "Notifications" },
 		keys = require("extensions.keys.nvim-notify"),
 		config = require("extensions.config.nvim-notify"),
 	}),
 	vl({
 		"folke/noice.nvim",
-		event = ev_noice,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -207,7 +197,6 @@ return {
 	--- more good neovim ui
 	vl({
 		"stevearc/dressing.nvim",
-		event = ev_noice,
 	}),
 
 	-- Highlights
@@ -227,10 +216,15 @@ return {
 	--- Todo Comments
 	vl({
 		"folke/todo-comments.nvim",
-		event = ev_BufLazy,
 		dependencies = "nvim-lua/plenary.nvim",
 		keys = require("extensions.keys.todo-comments"),
 		config = require("extensions.config.todo-comments"),
+	}),
+
+	--- Indent Line
+	vl({
+		"lukas-reineke/indent-blankline.nvim",
+		config = require("extensions.config.indent-blankline"),
 	}),
 
 	--- Colorcode
