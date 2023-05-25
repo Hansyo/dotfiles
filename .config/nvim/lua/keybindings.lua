@@ -9,9 +9,9 @@ local noremap = { noremap = true }
 
 -- General
 
-set("n", "<leader>s", "<Plug>(ToggleHotkey)")
+set("n", "<Leader>s", "<Plug>(ToggleHotkey)")
 -- set('n', 't', '<C-w>')
-set("n", "qq", "<cmd>nohlsearch<CR>", silent)
+set("n", "<Leader>qq", "<cmd>nohlsearch<CR>")
 set("n", "<Plug>(ToggleHotkey)n", function() vim.opt_local.relativenumber = not (vim.opt_local.relativenumber:get()) end)
 set("n", "<Plug>(ToggleHotkey)o", function() vim.o.scrolloff = (vim.o.scrolloff == 0) and 999 or 0 end)
 set("i", "jj", "<ESC>", silent)
