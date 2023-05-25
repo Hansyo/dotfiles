@@ -88,21 +88,7 @@ export VISUAL='nvim'
 
 ## 現在のPATHの一覧を表示
 function echo_PATH() {
-  echo $PATH > ~/PATH.txt
-  command sed -e "s/:/\n/g" ~/PATH.txt |cat > ~/PATH.cache
-  command cp ~/PATH.cache ~/PATH.txt
-  command rm ~/PATH.cache
-  if [ $# -ge 1 ];then
-     if [ $1 = "more" ];then
-        command more ~/PATH.txt
-     elif [ $1 = "cat" ];then
-        command cat ~/PATH.txt
-     else
-        echo 'Please select "cat" or "more".'
-     fi
-  else
-    command cat ~/PATH.txt
-  fi
+  echo $PATH | command sed -e "s/:/\n/g" | command sort
 }
 
 ## gccした時にファイル名と同じ実行ファイルを生成する
