@@ -20,15 +20,13 @@ function gituser-add () {
     GIT_USER_ARRAY=(${(s.:.)TARGET_STRING})
     git config user.name "${GIT_USER_ARRAY[1]}"
     git config user.email "${GIT_USER_ARRAY[2]}"
-    git config user.signingkey "${GIT_USER_ARRAY[3]}"
-    git config --list | grep user
+    git config user.signingkey "${GIT_USER_ARRAY[3]}" git config --list | grep user
 }
 
 # gitignore.ioからデータ引っ張って来て、gitignoreを作ってもらう
 function get-gitignore () {
-    QUERY=$@
-    echo ${QUERY// /,}
-    curl -sSL https://gitignore.io/api/${QUERY// /,} >> .gitignore
+	echo $@
+    curl -sSL "https://www.toptal.com/developers/gitignore/api/${(j:,:)@}" >> .gitignore
 }
 
 # dotfilesにディレクトリを登録する
@@ -61,3 +59,7 @@ function regist-dot () {
     ln ${LN_OPT} ${DOTFILES}/${H_C}${TARGET} ${HOME}/${H_C}${TARGET}
 }
 
+# move to git root directory
+function cd-gitroot () {
+	cd $(git rev-parse --show-toplevel)
+}
