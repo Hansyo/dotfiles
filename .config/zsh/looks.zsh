@@ -3,6 +3,10 @@ autoload -Uz colors
 colors
 
 # プロンプトの設定
+## PROMPT内での変数展開を行う
+setopt PROMPT_SUBST
+## Dummy gitprompt
+gitprompt(){}
 ## 実際の見た目
 PROMPT='
 %D %*
@@ -18,11 +22,18 @@ zle -N accept-line re-prompt
 
 # virtualenvでpromptを変更しない
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-# lsに色付けをする
-export LS_COLORS="no=00:fi=00:di=38;05;33:ln=38;05;45:or=01;36;41:ex=38;05;213"
 # setopt CLICOLOR=true
 # zshの補完候補を色付けする
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+export LS_COLORS="no=00:fi=00:di=38;05;33:ln=38;05;45:or=01;36;41:ex=38;05;213"
+case "$OSTYPE" in
+    linux*) zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ;;
+    darwin*)
+		export LSCOLORS_ARRAY=(gx fx Cx dx Bx eg ed ab ag ac ad)
+		export LSCOLORS=${(j::)LSCOLORS_ARRAY}
+		zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+		;;
+esac
 
-# zplugで入れてる、suggestionの色を変える 256色のカラーパレット
+# プラグインのsuggestionの色を変える 256色のカラーパレット
 typeset -g ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=247'
+
