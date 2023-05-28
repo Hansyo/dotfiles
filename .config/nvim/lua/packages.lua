@@ -59,7 +59,7 @@ return {
 		},
 	}),
 
-	-- -- Null-ls
+	--- Null-ls
 	{
 		"jay-babu/mason-null-ls.nvim",
 		lazy = true,
@@ -75,7 +75,24 @@ return {
 		config = require("extensions.config.null-ls"),
 	}),
 
-	-- Snippet
+	-- Edit関連
+	--- 補完
+	vl({
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
+			"onsails/lspkind.nvim",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
+		},
+		config = require("extensions.config.nvim-cmp"),
+	}),
+	--- Snippet
 	vl({
 		"hrsh7th/vim-vsnip",
 		event = { "InsertEnter" },
@@ -85,8 +102,54 @@ return {
 		},
 		config = require("extensions.config.vim-vsnip"),
 	}),
+	--- Telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		cmd = { "Telescope" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"rcarriga/nvim-notify",
+		},
+		keys = require("extensions.keys.telescope"),
+		config = require("extensions.config.telescope"),
+	},
+	--- Parences
+	vl({
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = require("extensions.config.nvim-surround"),
+	}),
+	--- Comments
+	vl({
+		"terrortylor/nvim-comment",
+		config = require("extensions.config.nvim-comment"),
+	}),
+	--- Alt coutup/down
+	{
+		"monaqa/dial.nvim",
+		keys = require("extensions.keys.dial"),
+	},
 
-	-- Tree Sitter
+	-- Motion
+	--- Easy Search
+	{
+		"hrsh7th/vim-searchx",
+		keys = require("extensions.keys.vim-searchx"),
+		config = require("extensions.config.vim-searchx"),
+	},
+	{
+		"skanehira/jumpcursor.vim",
+		keys = require("extensions.keys.jumpcursor"),
+	},
+	--- alt-matchup
+	vl({
+		"andymass/vim-matchup",
+		init = require("extensions.setup.vim-matchup"),
+	}),
+
+
+	-- Looking
+	--- Tree Sitter
 	vl({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -104,72 +167,12 @@ return {
 		keys = require("extensions.keys.twilight"),
 		config = require("extensions.config.twilight"),
 	},
-
-	-- Easy Search
-	{
-		"hrsh7th/vim-searchx",
-		keys = require("extensions.keys.vim-searchx"),
-		config = require("extensions.config.vim-searchx"),
-	},
-
-	{
-		"skanehira/jumpcursor.vim",
-		keys = require("extensions.keys.jumpcursor"),
-	},
-
-	-- Telescope
-	{
-		"nvim-telescope/telescope.nvim",
-		cmd = { "Telescope" },
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"rcarriga/nvim-notify",
-		},
-		keys = require("extensions.keys.telescope"),
-		config = require("extensions.config.telescope"),
-	},
-
-	-- 補完
-	vl({
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-vsnip",
-			"hrsh7th/vim-vsnip",
-			"onsails/lspkind.nvim",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-		},
-		config = require("extensions.config.nvim-cmp"),
-	}),
-
-	-- parences
-	vl({
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		config = require("extensions.config.nvim-surround"),
-	}),
-	vl({
-		"andymass/vim-matchup",
-		init = require("extensions.setup.vim-matchup"),
-	}),
-
 	-- Toggle numbers
 	vl({
 		"myusuf3/numbers.vim",
 		event = { "InsertEnter" },
 	}),
-
-	-- Alt coutup/down
-	{
-		"monaqa/dial.nvim",
-		keys = require("extensions.keys.dial"),
-	},
-
-	-- Alt StatusLine
+	--- Alt StatusLine
 	vl({
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
@@ -178,8 +181,7 @@ return {
 		},
 		config = require("extensions.config.lualine"),
 	}),
-
-	-- Noice!!
+	--- Noice!!
 	vl({
 		"rcarriga/nvim-notify",
 		cmd = { "Notifications" },
@@ -198,6 +200,11 @@ return {
 	vl({
 		"stevearc/dressing.nvim",
 	}),
+	--- Git
+	vl({
+		"lewis6991/gitsigns.nvim",
+		config = require("extensions.config.gitsigns"),
+	}),
 
 	-- Highlights
 	--- Trailing Whitespace
@@ -205,14 +212,12 @@ return {
 		"bronson/vim-trailing-whitespace",
 		config = require("extensions.config.vim-trailing-whitespace"),
 	}),
-
 	--- Colorscheme
 	vl({
 		"bluz71/vim-nightfly-colors",
 		lazy = false,
 		as = "nightfly",
 	}),
-
 	--- Todo Comments
 	vl({
 		"folke/todo-comments.nvim",
@@ -220,13 +225,11 @@ return {
 		keys = require("extensions.keys.todo-comments"),
 		config = require("extensions.config.todo-comments"),
 	}),
-
 	--- Indent Line
 	vl({
 		"lukas-reineke/indent-blankline.nvim",
 		config = require("extensions.config.indent-blankline"),
 	}),
-
 	--- Colorcode
 	{
 		"norcalli/nvim-colorizer.lua",
@@ -255,11 +258,6 @@ return {
 		},
 	},
 
-	-- Git
-	vl({
-		"lewis6991/gitsigns.nvim",
-		config = require("extensions.config.gitsigns"),
-	}),
 
 	-- Languages
 	--- Markdown
