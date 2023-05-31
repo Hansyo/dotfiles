@@ -89,6 +89,7 @@ return {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
+			{ "rinx/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
 		},
 		config = require("extensions.config.nvim-cmp"),
 	}),
@@ -271,6 +272,23 @@ return {
 		end,
 		ft = { "markdown" },
 	},
+
+	-- skkeleton
+	vl({
+		"vim-skk/skkeleton",
+		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
+		dependencies = {
+			"vim-denops/denops.vim",
+		},
+		keys = require("extensions.keys.skkeleton"),
+		config = require("extensions.config.skkeleton"),
+	}),
+	--- Indicator
+	vl({
+		"delphinus/skkeleton_indicator.nvim",
+		dependencies = { "vim-skk/skkeleton" },
+		opts = {},
+	}),
 
 	-- im-select
 	{

@@ -12,6 +12,7 @@ return function()
 			{ name = "path" },
 			{ name = "vsnip" },
 			{ name = "nvim_lsp_signature_help" },
+			{ name = "skkeleton" },
 		},
 		formatting = {
 			format = require("lspkind").cmp_format({
