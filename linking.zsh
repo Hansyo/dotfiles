@@ -17,7 +17,7 @@ for dir in ${(f)DIRS};do
         echo "Skip(Exist) ${dir}"
     else
         echo "linking ${SCRIPT_DIR}/${dir} -> ${HOME}/${dir}"
-        builtin ln ${LN_OPTION_DIR} ${SCRIPT_DIR}/${dir} ${HOME}/${dir}
+        command ln ${LN_OPTION_DIR} ${SCRIPT_DIR}/${dir} ${HOME}/${dir}
     fi
 done
 unset IGNORES
@@ -31,7 +31,7 @@ for f in ${(f)FILES};do
         echo "Skip(Exist) ${f}"
     else
         echo "linking ${SCRIPT_DIR}/${f} -> ${HOME}/${f}"
-        builtin ln ${LN_OPTION_FILE} ${SCRIPT_DIR}/${f} ${HOME}/${f}
+        command ln ${LN_OPTION_FILE} ${SCRIPT_DIR}/${f} ${HOME}/${f}
     fi
 done
 unset IGNORE_FILES
@@ -47,7 +47,7 @@ for f in ${(f)LINKS};do
         echo "Skip(Exist) ${DEST}"
     else
         echo "linking ${SOURCE} -> ${DEST}"
-        builtin ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
+        command ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
     fi
 done
 unset LINKS
