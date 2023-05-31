@@ -1,2 +1,3 @@
 # Source:Destination
-${DOTFILES}/.zsrc.d/.zshrc:${HOME}/.zshrc
+${XDG_CONFIG_HOME-~/.config}/zsh/.zshenv:${HOME}/.zshenv
+${DOTFILES-~/dotfiles}/.config/libimput-gestures.conf:${XDG_CONFIG_HOME-~/.config}/libimput-gestures.conf
