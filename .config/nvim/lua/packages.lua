@@ -148,7 +148,6 @@ return {
 		init = require("extensions.setup.vim-matchup"),
 	}),
 
-
 	-- Looking
 	--- Tree Sitter
 	vl({
@@ -258,7 +257,6 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 	},
-
 
 	-- Languages
 	--- Markdown
