@@ -20,7 +20,8 @@ function gituser-add () {
     GIT_USER_ARRAY=(${(s.:.)TARGET_STRING})
     git config user.name "${GIT_USER_ARRAY[1]}"
     git config user.email "${GIT_USER_ARRAY[2]}"
-    git config user.signingkey "${GIT_USER_ARRAY[3]}" git config --list | grep user
+    git config user.signingkey "${GIT_USER_ARRAY[3]}"
+    git config --list | grep user
 }
 
 # gitignore.ioからデータ引っ張って来て、gitignoreを作ってもらう
@@ -61,5 +62,5 @@ function regist-dot () {
 
 # move to git root directory
 function cd-gitroot () {
-	cd $(git rev-parse --show-toplevel)
+    cd $(git rev-parse --show-toplevel)
 }
