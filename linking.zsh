@@ -6,7 +6,7 @@ SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 export DOTFILES=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 LN_OPTION_DIR=-s
-LN_OPTION_FILE=-s
+LN_OPTION_FILE=-sf
 
 # すべてのディレクトリについて、適切な場所にシンボリックリンクを貼る
 IGNORES=".git|.vim/" # リンクから除外すべきものはきちんと指定する
@@ -62,7 +62,7 @@ for f in ${(f)COPYS};do
         echo "Skip(Exist) ${DEST}"
     else
         echo "copying ${SOURCE} -> ${DEST}"
-        builtin cp ${SOURCE} ${DEST}
+        command cp ${SOURCE} ${DEST}
     fi
 done
 unset COPYS
