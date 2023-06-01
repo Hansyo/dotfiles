@@ -142,11 +142,11 @@ return {
 		"skanehira/jumpcursor.vim",
 		keys = require("extensions.keys.jumpcursor"),
 	},
-	--- alt-matchup
-	vl({
+	--- alt-matchup -- Don't do lazy load
+	{
 		"andymass/vim-matchup",
 		init = require("extensions.setup.vim-matchup"),
-	}),
+	},
 
 	-- Looking
 	--- Tree Sitter

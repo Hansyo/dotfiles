@@ -6,7 +6,7 @@ SCRIPT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 export DOTFILES=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 LN_OPTION_DIR=-s
-LN_OPTION_FILE=-sf
+LN_OPTION_FILE=-sf # 強制的に再リンクする。
 
 # すべてのディレクトリについて、適切な場所にシンボリックリンクを貼る
 IGNORES=".git|.vim/" # リンクから除外すべきものはきちんと指定する
@@ -23,7 +23,7 @@ done
 unset IGNORES
 unset DIRS
 
-# dotfiles直下のファイルをリンク
+# dotfiles直下のファイルをリンク -- 既にファイルがある場合はスキップ
 IGNORE_FILES=".git"
 FILES=`find ${SCRIPT_DIR} -maxdepth 1 -type f -name '.*' -printf '%P\n'|grep -vE "${IGNORE_FILES}"`
 for f in ${(f)FILES};do
@@ -37,18 +37,14 @@ done
 unset IGNORE_FILES
 unset FILES
 
-# 個別ファイルのリンク
+# 個別ファイルのリンク -- 強制的に全てをリンクする。
 LINKS=`tail -n -1 ${SCRIPT_DIR}/link.list`
 for f in ${(f)LINKS};do
     ARY=(`echo ${f} | tr -s ':' ' '`)
     SOURCE=$(eval echo ${ARY[1]})
     DEST=$(eval echo ${ARY[2]})
-    if [[ -e ${DEST} ]];then
-        echo "Skip(Exist) ${DEST}"
-    else
-        echo "linking ${SOURCE} -> ${DEST}"
-        command ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
-    fi
+	echo "linking ${SOURCE} -> ${DEST}"
+	builtin ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
 done
 unset LINKS
 
