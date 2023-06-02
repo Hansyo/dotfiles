@@ -8,9 +8,18 @@ export DOTFILES=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 LN_OPTION_DIR=-s
 LN_OPTION_FILE=-sf # 強制的に再リンクする。
 
+case $OSTYPE in
+	darwin*)
+		FIND=gfind
+	;;
+	*)
+		FIND=find
+	;;
+esac
+
 # すべてのディレクトリについて、適切な場所にシンボリックリンクを貼る
 IGNORES=".git|.vim/" # リンクから除外すべきものはきちんと指定する
-DIRS=`find ${SCRIPT_DIR} -mindepth 1 -type d -printf '%P\n'|grep -vE "${IGNORES}"`
+DIRS=`$FIND ${SCRIPT_DIR} -mindepth 1 -type d -printf '%P\n'|grep -vE "${IGNORES}"`
 for dir in ${(f)DIRS};do
 	# ディレクトリが存在しない場合のみ、リンク
     if [[ -e ${HOME}/${dir} ]];then
@@ -25,7 +34,7 @@ unset DIRS
 
 # dotfiles直下のファイルをリンク -- 既にファイルがある場合はスキップ
 IGNORE_FILES=".git"
-FILES=`find ${SCRIPT_DIR} -maxdepth 1 -type f -name '.*' -printf '%P\n'|grep -vE "${IGNORE_FILES}"`
+FILES=`$FIND ${SCRIPT_DIR} -maxdepth 1 -type f -name '.*' -printf '%P\n'|grep -vE "${IGNORE_FILES}"`
 for f in ${(f)FILES};do
     if [[ -e ${HOME}/${f} ]];then
         echo "Skip(Exist) ${f}"
@@ -44,7 +53,7 @@ for f in ${(f)LINKS};do
     SOURCE=$(eval echo ${ARY[1]})
     DEST=$(eval echo ${ARY[2]})
 	echo "linking ${SOURCE} -> ${DEST}"
-	builtin ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
+	command ln ${LN_OPTION_FILE} ${SOURCE} ${DEST}
 done
 unset LINKS
 
@@ -58,7 +67,7 @@ for f in ${(f)COPYS};do
         echo "Skip(Exist) ${DEST}"
     else
         echo "copying ${SOURCE} -> ${DEST}"
-        command cp ${SOURCE} ${DEST}
+        builtin cp ${SOURCE} ${DEST}
     fi
 done
 unset COPYS
