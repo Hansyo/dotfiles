@@ -47,7 +47,7 @@ unset IGNORE_FILES
 unset FILES
 
 # 個別ファイルのリンク -- 強制的に全てをリンクする。
-LINKS=`tail -n -1 ${SCRIPT_DIR}/link.list`
+LINKS=`tail -n +2 ${SCRIPT_DIR}/link.list`
 for f in ${(f)LINKS};do
     ARY=(`echo ${f} | tr -s ':' ' '`)
     SOURCE=$(eval echo ${ARY[1]})
@@ -58,7 +58,7 @@ done
 unset LINKS
 
 # 個別ファイルのコピー
-COPYS=`tail -n -1 ${SCRIPT_DIR}/copy.list`
+COPYS=`tail -n +2 ${SCRIPT_DIR}/copy.list`
 for f in ${(f)COPYS};do
     ARY=(`echo ${f} | tr -s ':' ' '`)
     SOURCE=$(eval echo ${ARY[1]})
