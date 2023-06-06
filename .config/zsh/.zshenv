@@ -13,6 +13,14 @@ export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.nimble/bin:$HOM
 export LANG=ja_JP.UTF-8
 
 # Pyenv settings
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
+if [[ -e "$HOME/.pyenv" ]];then
+	export PYENV_ROOT="$HOME/.pyenv"
+	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+	command -v pyenv >/dev/null && eval "$(pyenv init -)"
+fi
+
+# Deno settings
+if [[ -e "$HOME/.deno" ]];then
+	export DENO_INSTALL="$HOME/.deno"
+	export PATH="$DENO_INSTALL/bin:$PATH"
+fi
