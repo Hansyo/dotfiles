@@ -134,11 +134,11 @@ return {
 
 	-- Motion
 	--- Easy Search
-	{
-		"hrsh7th/vim-searchx",
-		keys = require("extensions.keys.vim-searchx"),
-		config = require("extensions.config.vim-searchx"),
-	},
+	-- {
+	-- 	"hrsh7th/vim-searchx",
+	-- 	keys = require("extensions.keys.vim-searchx"),
+	-- 	config = require("extensions.config.vim-searchx"),
+	-- },
 	{
 		"skanehira/jumpcursor.vim",
 		keys = require("extensions.keys.jumpcursor"),
