@@ -40,14 +40,6 @@ return {
 		config = require("extensions.config.mason"),
 	}),
 
-	--- LSPの状態を表示するやつ。軽いので、lazy load は不要。
-	vl({
-		"j-hui/fidget.nvim",
-		config = function()
-			require("fidget").setup()
-		end,
-	}),
-
 	vl({
 		"glepnir/lspsaga.nvim",
 		branch = "main",
