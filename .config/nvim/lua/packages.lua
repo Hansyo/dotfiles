@@ -70,22 +70,56 @@ return {
 
 	-- Edit関連
 	--- 補完
+	---- nvim-cmp
+	-- vl({
+	-- 	"hrsh7th/nvim-cmp",
+	-- 	event = "InsertEnter",
+	-- 	dependencies = {
+	-- 		"hrsh7th/cmp-nvim-lsp",
+	-- 		"hrsh7th/cmp-buffer",
+	-- 		"hrsh7th/cmp-path",
+	-- 		"hrsh7th/cmp-vsnip",
+	-- 		"hrsh7th/vim-vsnip",
+	-- 		"onsails/lspkind.nvim",
+	-- 		"hrsh7th/cmp-nvim-lsp-signature-help",
+	-- 		{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
+	-- 		{ "rinx/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
+	-- 	},
+	-- 	config = require("extensions.config.nvim-cmp"),
+	-- }),
+
+	---- ddc.vim
 	vl({
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		"Shougo/ddc.vim",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-vsnip",
-			"hrsh7th/vim-vsnip",
-			"onsails/lspkind.nvim",
-			"hrsh7th/cmp-nvim-lsp-signature-help",
-			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-			{ "rinx/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
+			"vim-denops/denops.vim", -- requirement
+			"Shougo/pum.vim", -- popup menu
+			-- ui
+			"Shougo/ddc-ui-pum", -- pum ui
+			"Shougo/ddc-ui-native",  -- native ui
+			-- sources
+			"Shougo/ddc-source-around",
+			"matsui54/ddc-buffer",
+			"Shougo/ddc-nvim-lsp",
+			"Shougo/ddc-source-cmdline",
+			"Shougo/ddc-source-cmdline-history",
+			"LumaKernel/ddc-source-file",
+			"delphinus/ddc-treesitter",
+			-- filters
+			"Shougo/ddc-matcher_head",
+			"Shougo/ddc-sorter_rank",
+			"Shougo/ddc-converter_remove_overlap",
+			"tani/ddc-fuzzy",
 		},
-		config = require("extensions.config.nvim-cmp"),
+		config = require("extensions.config.ddc-vim"),
 	}),
+	---- pum.vim
+	vl({
+		"Shougo/pum.vim", -- popup menu
+		keys = require("extensions.keys.pum-vim"),
+	}),
+
 	--- Snippet
 	vl({
 		"hrsh7th/vim-vsnip",
