@@ -153,7 +153,7 @@ return {
 	--- Tree Sitter
 	vl({
 		"nvim-treesitter/nvim-treesitter",
-		run = function()
+		build = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
@@ -217,7 +217,7 @@ return {
 	vl({
 		"bluz71/vim-nightfly-colors",
 		lazy = false,
-		as = "nightfly",
+		-- name = "nightfly",
 	}),
 	--- Todo Comments
 	vl({
@@ -263,7 +263,7 @@ return {
 	--- Markdown
 	{
 		"iamcco/markdown-preview.nvim",
-		run = function()
+		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 		init = function()
