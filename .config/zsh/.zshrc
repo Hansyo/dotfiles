@@ -24,7 +24,7 @@ _echo 'start looks'
 source "${ZDOTDIR-~/.config/zsh}/looks.zsh"
 
 # arch linux only
-if test $(uname -n) = "archlinux";then
+if [[ $(uname -r) =~ "arch" ]];then
     _echo 'start arch' false
     source "${ZDOTDIR-~/.config/zsh}/arch.zsh"
 fi
