@@ -18,14 +18,6 @@ autoload -Uz compinit; compinit
 # 万が一設定されていなかった場合のための保険
 Z_DOT_DIR=${ZDOTDIR-~/.config/zsh}
 
-_echo 'start options'
-# 基本的なオプション
-source "${Z_DOT_DIR}/options.zsh"
-
-_echo 'start looks'
-# 見た目関連
-source "${Z_DOT_DIR}/looks.zsh"
-
 # OS固有の設定
 [ -f ${Z_DOT_DIR}/os/$(uname).zsh ] && source ${Z_DOT_DIR}/os/$(uname).zsh
 

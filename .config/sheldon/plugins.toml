@@ -45,15 +45,10 @@ github = "junegunn/fzf"
 
 # Local plugins
 ## Custom commands
-[plugins.usability]
-local = "~/.config/zsh"
-use = ["{{ name }}.zsh"]
-apply = ["defer"]
-
-[plugins.zkbd]
-local = "~/.config/zsh"
-use = ["{{ name }}.zsh"]
-apply = ["defer"]
+[plugins.local-sources]
+local = "~/.config/zsh/sources"
+use = ["*.zsh"]
+apply = ["defer", "source"]
 
 [templates]
 # Settings of lazy-load
