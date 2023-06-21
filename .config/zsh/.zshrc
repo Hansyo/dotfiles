@@ -15,31 +15,23 @@ eval "$(sheldon source)"
 # Need to compinit
 autoload -Uz compinit; compinit
 
+# 万が一設定されていなかった場合のための保険
+Z_DOT_DIR=${ZDOTDIR-~/.config/zsh}
+
 _echo 'start options'
 # 基本的なオプション
-source "${ZDOTDIR-~/.config/zsh}/options.zsh"
+source "${Z_DOT_DIR}/options.zsh"
 
 _echo 'start looks'
 # 見た目関連
-source "${ZDOTDIR-~/.config/zsh}/looks.zsh"
+source "${Z_DOT_DIR}/looks.zsh"
 
-# arch linux only
-if [[ $(uname -r) =~ "arch" ]];then
-    _echo 'start arch' false
-    source "${ZDOTDIR-~/.config/zsh}/arch.zsh"
-fi
+# OS固有の設定
+[ -f ${Z_DOT_DIR}/os/$(uname).zsh ] && source ${Z_DOT_DIR}/os/$(uname).zsh
 
 # local settings
 _echo 'start local'
-source "${ZDOTDIR-~/.config/zsh}/local.zsh"
-
-# os settings
-if $(uname -r | grep Microsoft > /dev/null); then
-    umask 022
-    export DISPLAY=:0
-    export GPG_TTY=$(tty)
-    export PATH=$HOME/.poetry/bin:$PATH
-fi
+source "${Z_DOT_DIR}/local.zsh"
 
 # auto renew command
 zstyle ":completion:*:commands" rehash 1
