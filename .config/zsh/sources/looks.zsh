@@ -6,7 +6,9 @@ autoload -Uz colors; colors
 setopt PROMPT_SUBST
 
 ## Dummy gitprompt
-gitprompt(){}
+if ! type gitprompt &> /dev/null;then
+	gitprompt(){}
+fi
 
 ## 実際の見た目
 PROMPT='
