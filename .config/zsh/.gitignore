@@ -10,6 +10,7 @@
 
 # Zsh completion-optimization dumpfile
 *zcompdump*
+*zcompcache*
 
 # Zsh history
 .zsh_history
