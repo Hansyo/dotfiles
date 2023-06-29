@@ -12,14 +12,15 @@ function _echo() {
 # zinit -> sheldon
 eval "$(sheldon source)"
 
-# Need to compinit
-autoload -Uz compinit; compinit
 
 # 万が一設定されていなかった場合のための保険
 Z_DOT_DIR=${ZDOTDIR-~/.config/zsh}
 
 # OS固有の設定
 [ -f ${Z_DOT_DIR}/os/$(uname).zsh ] && source ${Z_DOT_DIR}/os/$(uname).zsh
+
+# Need to compinit
+autoload -Uz compinit; compinit
 
 # local settings
 _echo 'start local'
