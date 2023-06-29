@@ -42,6 +42,11 @@ apply = ["defer"]
 [plugins.fzf]
 github = "junegunn/fzf"
 # apply = ['fzf-install', 'fzf-source']
+apply = ["defer", "fzf-source"]
+
+[plugins.zsh-fzf-history-search]
+github = "joshskidmore/zsh-fzf-history-search"
+apply = ["defer"]
 
 # Local plugins
 ## Custom commands
