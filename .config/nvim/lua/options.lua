@@ -20,8 +20,9 @@ local options = {
 	conceallevel = 0,
 	splitbelow = true,
 	splitright = true,
-	laststatus = 3,
+	laststatus = 2,
 	fillchars = {
+		-- 全体的に太めの線に変更
 		horiz = "━",
 		horizup = "┻",
 		horizdown = "┳",
