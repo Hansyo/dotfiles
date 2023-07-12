@@ -313,7 +313,7 @@ return {
 	vl({
 		"delphinus/skkeleton_indicator.nvim",
 		dependencies = { "vim-skk/skkeleton" },
-		opts = {},
+		opts = { fadeOutMs = 0 },
 	}),
 
 	-- im-select
