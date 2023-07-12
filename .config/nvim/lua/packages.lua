@@ -97,7 +97,7 @@ return {
 			"Shougo/pum.vim", -- popup menu
 			-- ui
 			"Shougo/ddc-ui-pum", -- pum ui
-			"Shougo/ddc-ui-native",  -- native ui
+			"Shougo/ddc-ui-native", -- native ui
 			-- sources
 			"Shougo/ddc-source-around",
 			"matsui54/ddc-buffer",
@@ -106,6 +106,7 @@ return {
 			"Shougo/ddc-source-cmdline-history",
 			"LumaKernel/ddc-source-file",
 			"delphinus/ddc-treesitter",
+			"uga-rosa/ddc-source-vsnip",
 			-- filters
 			"Shougo/ddc-matcher_head",
 			"Shougo/ddc-sorter_rank",

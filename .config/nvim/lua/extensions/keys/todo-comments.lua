@@ -1,11 +1,4 @@
-local function todo(name)
-	return function(opt)
-		return function()
-			return require("todo-comments")[name](opt or {})
-		end
-	end
-end
 return {
-	{ "]t", todo("jump_next"), desc = "Next todo comment" },
-	{ "[t", todo("jump_prev"), desc = "Previous todo comment" },
+	{ "]t", "<Cmd>lua require('todo-comments').jump_next()<CR>", mode = { "n" }, desc = "Next todo comment" },
+	{ "[t", "<Cmd>lua require('todo-comments').jump_prev()<CR>", mode = { "n" }, desc = "Previous todo comment" },
 }
