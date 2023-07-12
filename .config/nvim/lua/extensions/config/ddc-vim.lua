@@ -17,17 +17,17 @@ return function()
 				sorters = { "sorter_fuzzy", "sorter_rank" },
 				converters = { "converter_fuzzy", "converter_remove_overlap" },
 			},
-			around = { mark = "A" },
-			buffer = { mark = "B" },
-			vsnip = { mark = "vsnip" },
+			around = { mark = "󰈙" }, -- icon from nerdfont
+			buffer = { mark = "" }, -- icon from nerdfont
+			vsnip = { mark = "snip" },
 			["nvim-lsp"] = {
 				mark = "lsp",
 				forceCompletionPattern = [[\.\w*|:\w*|->\w*]],
 			},
-			cmdline = { mark = "cmd" },
+			cmdline = { mark = " " }, -- icon from nerdfont
 			["cmdline-history"] = { mark = "hist" },
 			file = {
-				mark = "F",
+				mark = " ", -- icon from nerdfont nf-oct-rel_file_path
 				isVolatile = true,
 				forceCompletionPattern = [[\S/\S*]],
 			},
