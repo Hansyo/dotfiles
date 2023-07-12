@@ -9,6 +9,7 @@ local noremap = { noremap = true }
 
 -- General
 
+set("n", "<f1>", "<Nop>") -- unbind help key
 set("n", "<Leader>s", "<Plug>(ToggleHotkey)")
 -- set('n', 't', '<C-w>')
 set("n", "<Leader>qq", "<cmd>nohlsearch<CR>")
@@ -17,9 +18,8 @@ set("n", "<Plug>(ToggleHotkey)o", function() vim.o.scrolloff = (vim.o.scrolloff 
 set("i", "jj", "<ESC>", silent)
 set("n", "+", "%")
 
--- Swap repeat key <-> mark key
+-- Add dot-repeat to mark key
 set("n", "m", ".", noremap)
-set("n", ".", "m", noremap)
 
 -- Toggle QuickFIX
 set("n", "<Plug>(ToggleHotkey)s",
