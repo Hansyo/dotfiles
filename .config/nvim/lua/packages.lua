@@ -238,7 +238,6 @@ return {
 	vl({
 		"bluz71/vim-nightfly-colors",
 		lazy = false,
-		-- name = "nightfly",
 	}),
 	--- Todo Comments
 	vl({
