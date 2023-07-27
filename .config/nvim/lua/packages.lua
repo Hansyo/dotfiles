@@ -157,6 +157,11 @@ return {
 	}),
 
 	-- Motion
+	--- More Better f/t jump
+	{
+		"hrsh7th/vim-eft",
+		keys = require("extensions.keys.vim-eft"),
+	},
 	{
 		"skanehira/jumpcursor.vim",
 		keys = require("extensions.keys.jumpcursor"),
