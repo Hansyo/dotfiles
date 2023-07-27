@@ -18,16 +18,18 @@ local function merge_table(target, value)
 	end
 end
 local function vl(pkg)
+	if type(pkg) == "string" then
+		pkg = { pkg }
+	end
 	pkg.event = merge_table(pkg.event, { "VeryLazy" })
 	return pkg
 end
 
 return {
-	vl({ "christoomey/vim-tmux-navigator" }),
-	vl({ "nvim-lua/plenary.nvim" }), -- いろんな奴らの依存プラグイン
-	vl({ "vim-jp/vimdoc-ja" }),
-	-- vl({ "vim-jp/nvimdoc-ja" }),
-	vl({ "tpope/vim-repeat" }), -- Expand dot repeat
+	vl("christoomey/vim-tmux-navigator"),
+	vl("nvim-lua/plenary.nvim"), -- いろんな奴らの依存プラグイン
+	vl("vim-jp/vimdoc-ja"),
+	vl("tpope/vim-repeat"), -- Expand dot repeat
 
 	-- LSP
 	vl({
@@ -153,19 +155,8 @@ return {
 		"terrortylor/nvim-comment",
 		config = require("extensions.config.nvim-comment"),
 	}),
-	--- Alt coutup/down
-	{
-		"monaqa/dial.nvim",
-		keys = require("extensions.keys.dial"),
-	},
 
 	-- Motion
-	--- Easy Search
-	-- {
-	-- 	"hrsh7th/vim-searchx",
-	-- 	keys = require("extensions.keys.vim-searchx"),
-	-- 	config = require("extensions.config.vim-searchx"),
-	-- },
 	{
 		"skanehira/jumpcursor.vim",
 		keys = require("extensions.keys.jumpcursor"),
@@ -225,9 +216,7 @@ return {
 		config = require("extensions.config.noice"),
 	}),
 	--- more good neovim ui
-	vl({
-		"stevearc/dressing.nvim",
-	}),
+	vl("stevearc/dressing.nvim"),
 	--- Git
 	vl({
 		"lewis6991/gitsigns.nvim",
