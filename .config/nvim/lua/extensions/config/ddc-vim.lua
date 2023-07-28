@@ -10,6 +10,7 @@ return function()
 			"cmdline-history",
 			"file",
 			"treesitter",
+			"copilot",
 		},
 		sourceOptions = {
 			_ = {
@@ -32,6 +33,11 @@ return function()
 				forceCompletionPattern = [[\S/\S*]],
 			},
 			treesitter = { mark = "TS" },
+			copilot = {
+				mark = "󰊤",
+				matchers = {},
+				minAutoCompleteLength = 0,
+			},
 		},
 		sourceParams = {
 			around = { maxSize = 500 },
