@@ -22,8 +22,8 @@ set("n", "+", "%")
 set("n", "m", ".", noremap)
 
 -- p <--> P: レジスタの更新をする/しないを入れ替える
-set("n", "p", "P", noremap)
-set("n", "P", "p", noremap)
+set("v", "p", "P", noremap)
+set("v", "P", "p", noremap)
 
 -- Toggle QuickFIX
 set("n", "<Plug>(ToggleHotkey)s",
