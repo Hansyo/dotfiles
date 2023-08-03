@@ -21,6 +21,10 @@ set("n", "+", "%")
 -- Add dot-repeat to mark key
 set("n", "m", ".", noremap)
 
+-- p <--> P: レジスタの更新をする/しないを入れ替える
+set("n", "p", "P", noremap)
+set("n", "P", "p", noremap)
+
 -- Toggle QuickFIX
 set("n", "<Plug>(ToggleHotkey)s",
 	function()
