@@ -106,6 +106,8 @@ return {
 			"Shougo/ddc-nvim-lsp",
 			"Shougo/ddc-source-cmdline",
 			"Shougo/ddc-source-cmdline-history",
+			"Shougo/ddc-source-copilot",
+			"github/copilot.vim",
 			"LumaKernel/ddc-source-file",
 			"delphinus/ddc-treesitter",
 			"uga-rosa/ddc-source-vsnip",
@@ -154,6 +156,14 @@ return {
 	vl({
 		"terrortylor/nvim-comment",
 		config = require("extensions.config.nvim-comment"),
+	}),
+
+	--- Copilot
+	vl({
+		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_no_maps = true
+		end,
 	}),
 
 	-- Motion
