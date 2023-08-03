@@ -307,14 +307,6 @@ return {
 		opts = { fadeOutMs = 0 },
 	}),
 
-	-- im-select
-	{
-		"keaising/im-select.nvim",
-		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter", "CursorHold" },
-		enabled = vim.fn.executable("im-select") == 1,
-		config = require("extensions.config.im-select"),
-	},
-
 	-- Calc startup time
 	{
 		"dstein64/vim-startuptime",
