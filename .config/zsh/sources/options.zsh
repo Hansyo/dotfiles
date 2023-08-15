@@ -9,6 +9,9 @@ export LANGUAGE=ja
 export EDITOR='nvim'
 export VISUAL='nvim'
 
+# #から始まるコマンドはコメントとして扱う
+setopt interactive_comments
+
 ## 間違ったら修正を提案
 setopt correct
 
