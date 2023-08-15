@@ -15,3 +15,8 @@ fi
 
 PIPR_PATH="~/.local/share/pipr/pipr_macos.zsh"
 [ -f $PIPR_PATH ] && source $PIPR_PATH
+
+
+if [[ -e $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk && ! -e /Library/Java/JavaVirtualMachines/openjdk.jdk ]];then
+    sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+fi
