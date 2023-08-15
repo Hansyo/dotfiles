@@ -60,6 +60,10 @@ local global_variables = {
 	skip_loading_mswin = 1,
 }
 
+if vim.fn.filereadable(vim.env.PYENV_ROOT .. "/versions/neovim3/bin/python") == 1 then
+	global_variables.python3_host_prog = "$PYENV_ROOT/versions/neovim3/bin/python"
+end
+
 for k, v in pairs(global_variables) do
 	vim.g[k] = v
 end
