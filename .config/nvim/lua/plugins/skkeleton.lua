@@ -1,7 +1,6 @@
 return {
 	{
 		"vim-skk/skkeleton",
-		commit = "fd9ab1e82f50c228f400e71646220d5d438f6479",
 		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
 		dependencies = {
 			"vim-denops/denops.vim",
