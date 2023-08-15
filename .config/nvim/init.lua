@@ -18,7 +18,8 @@ vim.opt.rtp:prepend(lazypath)
 require("options")
 require("keybindings")
 require("lsp")
-require("lazy").setup("packages")
+-- require("lazy").setup("packages")
+require("lazy").setup("plugins")
 
 -- パッケージからカラースキームを読み込むため、lazyの後に持ってくる
 require("colorscheme")
