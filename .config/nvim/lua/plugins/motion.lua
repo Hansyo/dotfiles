@@ -19,6 +19,7 @@ return {
 	--- alt-matchup -- Don't do lazy load
 	{
 		"andymass/vim-matchup",
+		event = { "BufReadPost" },
 		init = function()
 			-- disable default match plugin
 			vim.g.loaded_matchparen = 1

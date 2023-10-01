@@ -1,7 +1,14 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		event = { "VeryLazy" },
+		cmd = {
+			"Mason",
+			"MasonInstall",
+			"MasonUninstall",
+			"MasonUninstallAll",
+			"MasonLog",
+			"MasonUpdate",
+		},
 		dependencies = {
 			"mason-org/mason-registry",
 			"neovim/nvim-lspconfig",

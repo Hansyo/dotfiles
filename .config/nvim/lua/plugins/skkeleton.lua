@@ -1,7 +1,7 @@
 return {
 	{
 		"vim-skk/skkeleton",
-		event = { "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
+		event = { "VeryLazy", "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
 		dependencies = {
 			"vim-denops/denops.vim",
 		},
@@ -39,6 +39,7 @@ return {
 	{
 
 		"delphinus/skkeleton_indicator.nvim",
+		event = { "VeryLazy", "InsertEnter", "CmdlineEnter", "CmdwinEnter" },
 		dependencies = { "vim-skk/skkeleton" },
 		opts = { fadeOutMs = 0 },
 	},
