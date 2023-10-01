@@ -63,7 +63,11 @@ return {
 		"github/copilot.vim",
 		event = { "VeryLazy" },
 		config = function()
-			vim.g.copilot_no_maps = true
+			vim.g.copilot_filetypes = {
+				yaml = true,
+				toml = true,
+				md = true,
+			}
 		end,
 	},
 }
