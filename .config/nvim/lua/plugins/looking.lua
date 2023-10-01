@@ -25,6 +25,22 @@ return {
 		end,
 	},
 
+	---- Playground
+	{
+		"nvim-treesitter/playground",
+		cmd = {
+			"TSPlaygroundToggle",
+			"TSNodeUnderCursor",
+			"TSHighlightCapturesUnderCursor",
+		},
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+		},
+		enabled = function()
+			return not vim.g.vscode
+		end,
+	},
+
 	{
 		"folke/twilight.nvim",
 		cmd = { "Twilight" },
