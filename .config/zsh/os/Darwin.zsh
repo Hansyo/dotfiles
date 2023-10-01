@@ -20,3 +20,9 @@ PIPR_PATH="~/.local/share/pipr/pipr_macos.zsh"
 if [[ -e $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk && ! -e /Library/Java/JavaVirtualMachines/openjdk.jdk ]];then
     sudo ln -sfn $HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 fi
+
+if [[ -e $(brew --prefix)/share/google-cloud-sdk/path.zsh.inc ]];then
+	source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+	source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
