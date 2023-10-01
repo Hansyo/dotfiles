@@ -38,9 +38,44 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "VeryLazy" },
+		main = "ibl",
 		opts = {
-			show_current_context = true,
-			show_current_context_start = true,
+			indent = {
+				char = "┋",
+				whitespace = { highlight = { "Whitespace", "NonText" } },
+			},
+			scope = {
+				show_start = false,
+				show_end = false,
+				include = {
+					node_type = {
+						python = {
+							"import_from_statement",
+							"if_statement",
+							"for_statement",
+							"while_statement",
+							"try_statement",
+							"with_statement",
+							"match_statement",
+							"case_clause",
+							"expression_statement",
+						},
+						lua = {
+							"table_constructor",
+						},
+					},
+				},
+			},
+		},
+	},
+
+	-- Winsep
+	{
+		"nvim-zh/colorful-winsep.nvim",
+		-- config = true,
+		event = { "WinNew" },
+		opts = {
+			highlight = { fg = "#7b9e47" },
 		},
 	},
 
