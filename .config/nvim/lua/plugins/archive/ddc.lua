@@ -15,7 +15,7 @@ function tab_expand(all_ignore, direction)
 		if _col <= 0 then
 			return all_ignore
 		end
-		local from_idx, to_idx = vim.regex([[\s]]):match_str(vim.fn.getline("."):sub(_col, _col+1))
+		local from_idx, to_idx = vim.regex([[\s]]):match_str(vim.fn.getline("."):sub(_col, _col + 1))
 		if from_idx ~= nil and to_idx ~= nil then
 			return all_ignore
 		end
@@ -53,16 +53,24 @@ return {
 		config = function()
 			vim.fn["ddc#custom#patch_global"]({
 				ui = "pum",
+				autoCompleteEvents = {
+					"InsertEnter",
+					"TextChangedI",
+					"TextChangedP",
+					"CmdlineChanged",
+				},
 				sources = {
 					"around",
 					"buffer",
 					"vsnip",
 					"nvim-lsp",
-					"cmdline",
-					"cmdline-history",
 					"file",
 					"treesitter",
 					"copilot",
+				},
+				cmdlineSources = {
+					"cmdline",
+					"cmdline-history",
 				},
 				sourceOptions = {
 					_ = {
