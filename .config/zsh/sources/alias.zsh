@@ -7,6 +7,7 @@ alias reload='exec zsh'
 alias more='\less -R'
 alias rm='\rm -i'
 alias cp='\cp -i'
+alias mv='\mv -i'
 alias ls='\ls --color=always'
 alias up='cd ..'
-
+alias npm-run-dev='npm run dev'
