@@ -37,6 +37,8 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+vim.opt.shortmess:append("I") -- 起動時のメッセージを非表示
+
 local global_variables = {
 	-- Disable default plugin: 変数が設定されていれば、良いので、値はなんでも良い
 	loaded_tar = 0,
