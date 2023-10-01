@@ -12,6 +12,9 @@ return {
 	{
 		"bluz71/vim-nightfly-colors",
 		lazy = false,
+		enabled = function()
+			return not vim.g.vscode
+		end,
 	},
 
 	-- todo-comments

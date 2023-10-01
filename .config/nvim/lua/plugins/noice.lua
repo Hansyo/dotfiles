@@ -5,6 +5,9 @@ return {
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},
+	enabled = function()
+		return not vim.g.vscode
+	end,
 	opts = {
 		cmdline = {
 			enabled = true, -- enables the Noice cmdline UI

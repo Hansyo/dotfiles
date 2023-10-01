@@ -19,6 +19,9 @@ return {
 		{ TeleLeader .. "b", wrap("buffers") },
 		{ TeleLeader .. "h", wrap("help_tags") },
 	},
+	enabled = function()
+		return not vim.g.vscode
+	end,
 	opts = {
 		defaults = {
 			-- Default configuration for telescope goes here:

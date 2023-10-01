@@ -65,6 +65,9 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"lewis6991/gitsigns.nvim",
 	},
+	enabled = function()
+		return not vim.g.vscode
+	end,
 	opts = {
 		options = {
 			icons_enabled = true,

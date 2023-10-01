@@ -7,6 +7,9 @@ return {
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
+		enabled = function()
+			return not vim.g.vscode
+		end,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				auto_install = true,
@@ -51,6 +54,9 @@ return {
 			{ "<Plug>(ToggleHotkey)T", "<Plug>(TwilightToggle)", mode = { "n", "i", "v" } },
 			{ "<Plug>(TwilightToggle)", "<cmd>Twilight<CR>", mode = { "n", "i", "v" } },
 		},
+		enabled = function()
+			return not vim.g.vscode
+		end,
 		opts = {
 			expand = {
 				"function_definition",
@@ -66,6 +72,9 @@ return {
 	{
 		"myusuf3/numbers.vim",
 		event = { "InsertEnter", "VeryLazy" },
+		enabled = function()
+			return not vim.g.vscode
+		end,
 	},
 
 	--- Lualine -> lualine.lua
@@ -79,6 +88,9 @@ return {
 			{ "<Leader>qn", "<Cmd>lua require('notify').dismiss()<CR>" },
 		},
 		dependencies = { "nvim-telescope/telescope.nvim" },
+		enabled = function()
+			return not vim.g.vscode
+		end,
 		config = function()
 			require("notify").setup({
 				background_colour = "#000000",
@@ -94,6 +106,9 @@ return {
 	{
 		"stevearc/dressing.nvim",
 		event = { "VeryLazy" },
+		enabled = function()
+			return not vim.g.vscode
+		end,
 	},
 
 	--- Git -> gitsigns.lua

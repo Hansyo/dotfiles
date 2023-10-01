@@ -21,5 +21,7 @@ require("lsp")
 -- require("lazy").setup("packages")
 require("lazy").setup("plugins")
 
--- パッケージからカラースキームを読み込むため、lazyの後に持ってくる
-require("colorscheme")
+if not vim.g.vscode then
+	-- パッケージからカラースキームを読み込むため、lazyの後に持ってくる
+	require("colorscheme")
+end

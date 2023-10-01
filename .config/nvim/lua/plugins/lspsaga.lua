@@ -11,6 +11,9 @@ return {
 		{ "<F2>", "<cmd>Lspsaga rename<CR>", desc = "Rename object" },
 		{ "<F5>", vim.lsp.buf.format, desc = "Format on LSP" },
 	},
+	enabled = function()
+		return not vim.g.vscode
+	end,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"nvim-treesitter/nvim-treesitter",
