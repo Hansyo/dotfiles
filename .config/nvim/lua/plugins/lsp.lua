@@ -22,8 +22,9 @@ return {
 						-- 	vim.lsp.protocol.make_client_capabilities()
 						-- ),
 					}
-					require("lspconfig")[server].setup(opts)
-					require("lspconfig").lua_ls.setup({
+					lspconfig = require("lspconfig")
+					lspconfig[server].setup(opts)
+					lspconfig.lua_ls.setup({
 						settings = {
 							Lua = {
 								diagnostics = {
@@ -33,10 +34,12 @@ return {
 							},
 						},
 					})
-					require("lspconfig").yamlls.setup({
+					lspconfig.yamlls.setup({
 						settings = {
 							yaml = {
-								-- keyOrdering = false,
+								schemaStore = {
+									enable = true,
+								},
 							},
 						},
 					})
