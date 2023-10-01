@@ -18,6 +18,21 @@ autocmd("Colorscheme", transparentCommand("EndOfBuffer"))
 autocmd("Colorscheme", transparentCommand("VertSplit"))
 autocmd("Colorscheme", transparentCommand("WinBar"))
 autocmd("Colorscheme", transparentCommand("WinBarNC"))
+autocmd("Colorscheme", transparentCommand("DiagnosticError"))
+autocmd("Colorscheme", transparentCommand("DiagnosticWarn"))
+autocmd("Colorscheme", transparentCommand("DiagnosticInfo"))
+autocmd("Colorscheme", transparentCommand("DiagnosticHint"))
+autocmd("Colorscheme", transparentCommand("DiagnosticOk"))
+autocmd("Colorscheme", transparentCommand("DiagnosticVirtualTextError"))
+autocmd("Colorscheme", transparentCommand("DiagnosticVirtualTextWarn"))
+autocmd("Colorscheme", transparentCommand("DiagnosticVirtualTextInfo"))
+autocmd("Colorscheme", transparentCommand("DiagnosticVirtualTextHint"))
+autocmd("Colorscheme", transparentCommand("DiagnosticVirtualTextOk"))
+autocmd("Colorscheme", transparentCommand("DiagnosticUnderlineError"))
+autocmd("Colorscheme", transparentCommand("DiagnosticUnderlineWarn"))
+autocmd("Colorscheme", transparentCommand("DiagnosticUnderlineInfo"))
+autocmd("Colorscheme", transparentCommand("DiagnosticUnderlineHint"))
+autocmd("Colorscheme", transparentCommand("DiagnosticUnderlineOk"))
 
 local highlightLineGrp = augroup("HighlightLine", { clear = true })
 autocmd("Colorscheme", {
@@ -43,5 +58,6 @@ vim.g.nightflyCursorColor = true
 vim.g.nightflyUnderlineMatchParen = true
 vim.g.nightflyTransparent = true
 vim.g.nightflyUndercurls = true
+vim.g.nightflyVirtualTextColor = true
 
 vim.cmd([[ colorscheme nightfly ]])
