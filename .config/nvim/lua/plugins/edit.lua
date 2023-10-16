@@ -1,25 +1,8 @@
 return {
 
 	--- 補完
-	---- nvim-cmp
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	event = "InsertEnter",
-	-- 	dependencies = {
-	-- 		"hrsh7th/cmp-nvim-lsp",
-	-- 		"hrsh7th/cmp-buffer",
-	-- 		"hrsh7th/cmp-path",
-	-- 		"hrsh7th/cmp-vsnip",
-	-- 		"hrsh7th/vim-vsnip",
-	-- 		"onsails/lspkind.nvim",
-	-- 		"hrsh7th/cmp-nvim-lsp-signature-help",
-	-- 		{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-	-- 		{ "rinx/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
-	-- 	},
-	-- 	config = require("extensions.config.nvim-cmp"),
-	-- },
-
-	---- ddc.vim -> ddc.lua
+	---- nvim-cmp -> nvim-cmp.lua
+	---- ddc.vim -> archive/ddc.lua
 
 	--- Snippet
 	{
