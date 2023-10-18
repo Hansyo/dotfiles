@@ -42,15 +42,31 @@ return {
 	},
 
 	--- Copilot
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	event = { "VeryLazy" },
+	-- 	config = function()
+	-- 		vim.g.copilot_filetypes = {
+	-- 			yaml = true,
+	-- 			toml = true,
+	-- 			md = true,
+	-- 		}
+	-- 	end,
+	-- },
 	{
-		"github/copilot.vim",
+		"zbirenbaum/copilot.lua",
 		event = { "VeryLazy" },
+		cmd = "Copilot",
 		config = function()
 			vim.g.copilot_filetypes = {
 				yaml = true,
 				toml = true,
 				md = true,
 			}
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+			})
 		end,
 	},
 }
