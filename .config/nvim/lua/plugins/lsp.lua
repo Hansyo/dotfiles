@@ -59,7 +59,8 @@ return {
 
 	--- Null-ls
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		-- "jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "VeryLazy" },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
