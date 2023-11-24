@@ -1,17 +1,32 @@
 fpath+=~/.zfunc
 
-print_message=false
-function _echo() {
-    if $print_message; then
-        echo $1
-    elif [ $# -eq 2 ]; then
-        if $2; then echo $1; fi
-    fi
+# source を高速化(zcompileを使うことで、爆速になる)
+function source {
+  ensure_zcompiled $1
+  builtin source $1
 }
+function ensure_zcompiled {
+  local compiled="$1.zwc"
+  if [[ ! -r "$compiled" || "$1" -nt "$compiled" ]]; then
+    echo "\033[1;36mCompiling\033[m $1"
+    zcompile $1
+  fi
+}
+ensure_zcompiled "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.zshrc"
 
 # zinit -> sheldon
-eval "$(sheldon source)"
-
+## sheldon高速化の秘技
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/sheldon"
+sheldon_cache="${cache_dir}/sheldon.zsh"
+sheldon_tol="${XDG_CONFIG_HOME:-$HOME/.config}/sheldon/plugins.toml"
+## キャッシュがない、またはキャッシュが古い場合にキャッシュを作成
+if [[ ! -r "$sheldon_cache" || "$sheldon_toml" -nt "$sheldon_cache" ]]; then
+  mkdir -p $cache_dir
+  sheldon source > $sheldon_cache
+fi
+source "$sheldon_cache"
+## 使い終わった変数を削除
+unset cache_dir sheldon_cache sheldon_toml
 
 # 万が一設定されていなかった場合のための保険
 Z_DOT_DIR=${ZDOTDIR-~/.config/zsh}
@@ -20,17 +35,9 @@ Z_DOT_DIR=${ZDOTDIR-~/.config/zsh}
 [ -f ${Z_DOT_DIR}/os/$(uname).zsh ] && source ${Z_DOT_DIR}/os/$(uname).zsh
 
 # Need to compinit
-autoload -Uz compinit; compinit
+# autoload -Uz compinit; compinit
 
-# local settings
-_echo 'start local'
-source "${Z_DOT_DIR}/local.zsh"
-
-# auto renew command
-zstyle ":completion:*:commands" rehash 1
-
-unset print_message
-
+# source $Z_DOT_DIR/local.zsh
 
 # tmuxの起動スクリプト
 function tmux-up () {
@@ -84,4 +91,6 @@ function tmux-up () {
     fi
 }
 
-tmux-up
+zsh-defer unfunction source
+
+# tmux-up

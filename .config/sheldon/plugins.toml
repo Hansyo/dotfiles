@@ -41,8 +41,8 @@ apply = ["defer"]
 
 [plugins.fzf]
 github = "junegunn/fzf"
-# apply = ['fzf-install', 'fzf-source']
-apply = ["defer", "fzf-source"]
+apply = ["defer"]
+use = ["completion.zsh"]
 
 [plugins.zsh-fzf-history-search]
 github = "joshskidmore/zsh-fzf-history-search"
@@ -53,10 +53,14 @@ apply = ["defer"]
 [plugins.local-sources]
 local = "~/.config/zsh/sources"
 use = ["*.zsh"]
-apply = ["defer", "source"]
+apply = ["source"]
+
+[plugins.local-sources-defer]
+local = "~/.config/zsh/sources-defer"
+apply = ["defer"]
 
 [templates]
 # Settings of lazy-load
-defer = "{{ hooks | get: \"pre\" | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks | get: \"post\" | nl }}"
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 fzf-install = "{{ dir }}/install --bin > /dev/null \n[[ ! $PATH =~ {{ dir }} ]] && export PATH=\"$PATH:{{ dir }}/bin\"\n"
 fzf-source = "{% for file in files %}source \"{{ file }}\"\n{% endfor %}"

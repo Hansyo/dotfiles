@@ -1,4 +1,3 @@
-_echo '  start set PATH'
 ## export関連
 export PYTHONPATH=/usr/local/lib/python3.6/dist-packages:$PYTHONPATH
 export PREFIX="$HOME/opt/cross"
@@ -43,7 +42,6 @@ setopt hist_reduce_blanks
 # cdしたら自動でpushdする
 setopt auto_pushd
 
-_echo '  start bindkey'
 # bindey関連
 ## emacs風のキーバインド
 bindkey -e

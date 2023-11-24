@@ -1,4 +1,3 @@
-_echo '  start alias'
 # alias関連
 #alias touchpad-disable='xinput disable 12'
 #alias touchpad-enabe='xinput enable 12'

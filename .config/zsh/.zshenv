@@ -14,13 +14,18 @@ export LANG=ja_JP.UTF-8
 
 # Pyenv settings
 if [[ -e "$HOME/.pyenv" ]];then
-	export PYENV_ROOT="$HOME/.pyenv"
-	command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-	command -v pyenv >/dev/null && eval "$(pyenv init -)"
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    # command -v pyenv >/dev/null && eval "$(pyenv init -)"
+    pyenv() {
+        unset -f pyenv
+        eval "$(command pyenv init -)"
+        pyenv $@
+    }
 fi
 
 # Deno settings
 if [[ -e "$HOME/.deno" ]];then
-	export DENO_INSTALL="$HOME/.deno"
-	export PATH="$DENO_INSTALL/bin:$PATH"
+    export DENO_INSTALL="$HOME/.deno"
+    export PATH="$DENO_INSTALL/bin:$PATH"
 fi
