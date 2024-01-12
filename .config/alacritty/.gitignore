@@ -1,3 +1,5 @@
 # This is change by os, so you need to change template file
 font-config.yml
 local.yml
+font-config.toml
+local.toml
