@@ -11,7 +11,7 @@ return {
 			"onsails/lspkind.nvim",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			{ "hrsh7th/cmp-cmdline", event = { "CmdlineEnter" } },
-			{ "rinx/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
+			{ "uga-rosa/cmp-skkeleton", dependencies = { "vim-skk/skkeleton" } },
 			{ "zbirenbaum/copilot-cmp", main = "copilot_cmp", opts = {} },
 		},
 		config = function()

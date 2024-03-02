@@ -50,6 +50,13 @@ return {
 							},
 						},
 					})
+					lspconfig.ltex.setup({
+						settings = {
+							ltex = {
+								language = "ja-JP",
+							},
+						},
+					})
 				end,
 			})
 		end,

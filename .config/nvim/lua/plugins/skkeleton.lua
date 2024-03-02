@@ -6,17 +6,16 @@ return {
 			"vim-denops/denops.vim",
 		},
 		keys = {
-			{ "<C-j>", "<Plug>(skkeleton-enable)", mode = { "c", "i" } },
-			{ "kk", "<Plug>(skkeleton-enable)", mode = { "c", "i" } },
-			{ "<C-k>", "<Plug>(skkeleton-disable)", mode = { "c", "i" } },
+			{ "<C-k>", "<Plug>(skkeleton-enable)", mode = { "c", "i" } },
+			-- { "kk", "<Plug>(skkeleton-enable)", mode = { "c", "i" } },
+			{ "<C-j>", "<Plug>(skkeleton-disable)", mode = { "c", "i" } },
 			{ "<C-f>", "<Plug>(skkeleton-toggle)", mode = { "c", "i" } },
 		},
 
 		config = function()
 			vim.fn["skkeleton#config"]({
-				globalJisyo = "~/.skk/SKK-JISYO.L",
-				userJisyo = "~/.skk/USER-JISYO",
-				useSkkServer = true,
+				globalDictionaries = {"~/.skk/SKK-JISYO.L"},
+				userDictionary = "~/.skk/USER-JISYO",
 				eggLikeNewline = true, -- 変換モードで改行したときに、確定だけ行う(改行しない)
 			})
 			vim.fn["skkeleton#register_kanatable"]("rom", {
@@ -32,6 +31,8 @@ return {
 				lyo = { "ょ" },
 				ltu = { "っ" },
 				ltsu = { "っ" },
+				-- [","] = { "，" },
+				-- ["."] = { "．" },
 			})
 		end,
 	},
