@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Alacritty - New Window
+# @raycast.mode compact
+
+# Optional parameters:
+# @raycast.icon 🤖
+
+# Documentation:
+# @raycast.description Create Alacritty new window
+# @raycast.author Hansyo
+# @raycast.authorURL https://github.com/Hansyo
+
+echo "Hello World!"
+
