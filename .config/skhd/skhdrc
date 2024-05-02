@@ -1,3 +1,4 @@
+::default
 # Window
 ## focus window
 cmd - h : yabai -m window --focus west || yabai -m display --focus west || yabai -m display --focus last
@@ -50,3 +51,23 @@ shift + cmd - space : yabai -m window --toggle float
 
 # Toggle native fullscreen
 f19 : yabai -m window --toggle native-fullscreen
+
+
+# Resize mode
+::resize
+default < cmd + ctrl - r; resize
+resize < cmd + ctrl - r; default
+resize < escape; default
+resize < return; default
+
+## increase
+resize < h: yabai -m window --resize left:-20:0
+resize < l: yabai -m window --resize right:20:0
+resize < j: yabai -m window --resize bottom:0:-20
+resize < k: yabai -m window --resize top:0:20
+
+## decrease
+resize < shift - h: yabai -m window --resize left:20:0
+resize < shift - l: yabai -m window --resize right:-20:0
+resize < shift - j: yabai -m window --resize bottom:0:20
+resize < shift - k: yabai -m window --resize top:0:-20
